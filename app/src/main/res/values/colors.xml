@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="profileBlue">#242235</color>
+    <color name="profileTitle">#FAFAFA</color>
 </resources>

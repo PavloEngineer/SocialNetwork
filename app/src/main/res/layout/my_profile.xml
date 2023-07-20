@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -45,6 +46,30 @@
         app:layout_constraintStart_toStartOf="parent"
         android:background="@color/profileBlue"
         />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/topGuideline"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        android:text="@string/title_myProfile"
+        android:textColor="@color/profileTitle"
+        android:textSize="@dimen/titleSizeText"
+        app:fontFamily="@font/opensans_semibold"
+        />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/avatar"
+        android:layout_width="113dp"
+        android:layout_height="113dp"
+        android:src="@drawable/avatar"
+        app:shapeAppearanceOverlay="@style/circular"
+        app:layout_constraintTop_toBottomOf ="@id/title"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        app:layout_constraintEnd_toEndOf="@id/endGuideline"
+        android:layout_marginTop="15dp"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

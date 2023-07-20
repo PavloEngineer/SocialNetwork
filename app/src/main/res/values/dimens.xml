@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="backdown">16dp</dimen>
+    <dimen name="titleSizeText">24sp</dimen>
 
 </resources>
