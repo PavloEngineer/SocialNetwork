@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="backdown">16dp</dimen>
-    <dimen name="titleSizeText">24sp</dimen>
+    <dimen name="title_size_text">24sp</dimen>
+    <dimen name="margin_profile">15dp</dimen>
+    <dimen name="margin_profile_info">10dp</dimen>
+    <dimen name="name_size_text">18sp</dimen>
+    <dimen name="job_size_text">14sp</dimen>
 
 </resources>
