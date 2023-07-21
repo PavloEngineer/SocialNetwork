@@ -148,7 +148,39 @@
 
         />
 
-    
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/editButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/editButton"
+        android:fontFamily="@font/opensans_semibold"
+        android:textColor="@color/textEditButton"
+        android:textSize="@dimen/job_size_text"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        app:layout_constraintEnd_toEndOf="@id/endGuideline"
+        app:layout_constraintBottom_toTopOf="@id/viewContactButton"
+        android:backgroundTint="@color/white"
+        app:cornerRadius="6dp"
+        app:strokeColor="@color/profileBlue"
+        app:strokeWidth="2dp"
+        android:layout_marginBottom="@dimen/margin_between_buttons"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/viewContactButton"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:text="@string/viewContactButton"
+        android:fontFamily="@font/opensans_semibold"
+        android:textColor="@color/light"
+        android:textSize="@dimen/job_size_text"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        app:layout_constraintEnd_toEndOf="@id/endGuideline"
+        app:layout_constraintBottom_toBottomOf="@id/bottomGuideline"
+        android:backgroundTint="@color/orange"
+        app:cornerRadius="6dp"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
