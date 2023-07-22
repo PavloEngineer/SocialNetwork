@@ -6,4 +6,6 @@
     <string name="home_address">5295 Gaylord Walks Apk. 110</string>
     <string name="editButton">Edit profile</string>
     <string name="viewContactButton">View my contacts</string>
+    <string name="labelLetsGet">Let\'s get acquainted</string>
+    <string name="labelBottomTitle">Fill out the profile and go to the application!</string>
 </resources>

@@ -8,5 +8,7 @@
     <dimen name="job_size_text">14sp</dimen>
     <dimen name="margin_click_profile">70dp</dimen>
     <dimen name="margin_between_buttons">5dp</dimen>
+    <dimen name="margin_top_title">100dp</dimen>
+    <dimen name="size_bottom_title">12sp</dimen>
 
 </resources>
