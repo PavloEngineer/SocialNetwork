@@ -13,4 +13,5 @@
     <color name="textEditButton">#18181F</color>
     <color name="orange">#FB5E06</color>
     <color name="light">#FFFFFF</color>
+    <color name="greyAuth">#BDBDBD</color>
 </resources>

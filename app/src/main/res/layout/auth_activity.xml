@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/profileBlue"
@@ -41,7 +42,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/labelLetsGet"
+        android:text="@string/label_lets_get"
         android:textColor="@color/profileTitle"
         android:textSize="@dimen/title_size_text"
         android:fontFamily="@font/opensans_semibold"
@@ -55,7 +56,7 @@
         android:id="@+id/labelBottomTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/labelBottomTitle"
+        android:text="@string/label_bottom_title"
         android:textColor="@color/profileTitle"
         android:textSize="@dimen/size_bottom_title"
         android:fontFamily="@font/opensans_regular"
@@ -64,6 +65,66 @@
         app:layout_constraintEnd_toEndOf="@id/endGuideline"
         android:layout_marginTop="@dimen/margin_profile_info"
         />
+
+    <TextView
+        android:id="@+id/labelEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_email"
+        android:textColor="@color/greyAuth"
+        android:textSize="@dimen/job_size_text"
+        android:fontFamily="@font/opensans_semibold"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@id/labelBottomTitle"
+        android:layout_marginTop="@dimen/margin_profile"
+        android:layout_marginStart="@dimen/margin_profile_info"
+        />
+
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/profileTitle"
+        android:textSize="@dimen/name_size_text"
+        android:fontFamily="@font/opensans_semibold"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        app:layout_constraintEnd_toEndOf="@id/endGuideline"
+        app:layout_constraintTop_toBottomOf="@id/labelEmail"
+        android:layout_marginTop="@dimen/margin_profile_info"
+        android:inputType="textEmailAddress"
+        android:backgroundTint="@color/greyAuth"
+        android:autofillHints="emailAddress"
+        android:labelFor="@id/labelEmail" />
+
+    <TextView
+        android:id="@+id/labelPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_password"
+        android:textColor="@color/greyAuth"
+        android:textSize="@dimen/job_size_text"
+        android:fontFamily="@font/opensans_semibold"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@id/editEmail"
+        android:layout_marginTop="@dimen/margin_profile"
+        android:layout_marginStart="@dimen/margin_profile_info"
+        />
+
+    <EditText
+        android:id="@+id/editPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/profileTitle"
+        android:textSize="@dimen/name_size_text"
+        android:fontFamily="@font/opensans_semibold"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        app:layout_constraintEnd_toEndOf="@id/endGuideline"
+        app:layout_constraintTop_toBottomOf="@id/labelPassword"
+        android:layout_marginTop="@dimen/margin_profile_info"
+        android:inputType="textPassword"
+        android:backgroundTint="@color/greyAuth"
+        android:autofillHints="emailAddress"
+        android:labelFor="@id/labelPassword" />
 
     
 

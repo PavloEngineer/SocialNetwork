@@ -4,8 +4,10 @@
     <string name="name_myProfile">Lucile Alvarado</string>
     <string name="job_myProfile">Graphic designer</string>
     <string name="home_address">5295 Gaylord Walks Apk. 110</string>
-    <string name="editButton">Edit profile</string>
-    <string name="viewContactButton">View my contacts</string>
-    <string name="labelLetsGet">Let\'s get acquainted</string>
-    <string name="labelBottomTitle">Fill out the profile and go to the application!</string>
+    <string name="edit_button">Edit profile</string>
+    <string name="view_contact_button">View my contacts</string>
+    <string name="label_lets_get">Let\'s get acquainted</string>
+    <string name="label_bottom_title">Fill out the profile and go to the application!</string>
+    <string name="label_email">E-mail</string>
+    <string name="label_password">Password</string>
 </resources>
