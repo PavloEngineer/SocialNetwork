@@ -14,4 +14,6 @@
     <string name="signUp_or">or</string>
     <string name="text_register">register</string>
     <string name="text_terms">By clicking Register you agree to our Terms and Conditions</string>
+    <string name="text_question">Already have an account?</string>
+    <string name="text_signIn">Sign in</string>
 </resources>

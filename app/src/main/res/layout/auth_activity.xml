@@ -191,7 +191,35 @@
         app:layout_constraintEnd_toEndOf="@id/endGuideline"
         app:layout_constraintStart_toStartOf="@id/startGuideline"
         app:layout_constraintTop_toBottomOf="@id/registerButton" />
-    
+
+    <TextView
+        android:id="@+id/labelQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_profile_info"
+        android:fontFamily="@font/opensans_semibold"
+        android:text="@string/text_question"
+        android:textColor="@color/textJob"
+        android:textSize="@dimen/job_size_text"
+        android:layout_marginStart="@dimen/margin_question"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@id/labelTerms" />
+
+    <TextView
+        android:id="@+id/labelSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/opensans_semibold"
+        android:text="@string/text_signIn"
+        android:textColor="@color/light"
+        android:textSize="@dimen/job_size_text"
+        app:layout_constraintStart_toEndOf="@id/labelQuestion"
+        app:layout_constraintTop_toTopOf="@id/labelQuestion"
+        android:layout_marginStart="@dimen/margin_profile_info"
+        />
+
+
+
 
 
 
