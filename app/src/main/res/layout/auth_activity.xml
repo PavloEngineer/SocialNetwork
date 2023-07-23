@@ -142,7 +142,58 @@
         android:paddingEnd="@dimen/padding_text_checkBox"
         />
 
+    <TextView
+        android:id="@+id/labelOr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/signUp_or"
+        android:textColor="@color/profileTitle"
+        android:fontFamily="@font/opensans_semibold"
+        android:textSize="@dimen/name_size_text"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        app:layout_constraintEnd_toEndOf="@id/endGuideline"
+        app:layout_constraintTop_toBottomOf="@id/checkboxRemember"
+        android:layout_marginTop="@dimen/margin_profile_info"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/registerButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/text_register"
+        android:fontFamily="@font/opensans_semibold"
+        android:textColor="@color/profileTitle"
+        android:textSize="@dimen/size_register_button"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        app:layout_constraintEnd_toEndOf="@id/endGuideline"
+        app:layout_constraintTop_toBottomOf="@id/labelOr"
+        android:backgroundTint="@color/profileBlue"
+        app:cornerRadius="6dp"
+        app:strokeColor="@color/orange"
+        app:strokeWidth="2dp"
+        android:layout_marginTop="@dimen/margin_profile_info"
+        android:paddingTop="@dimen/padding_register_button"
+        android:paddingBottom="@dimen/padding_register_button"
+        />
+
+    <TextView
+        android:id="@+id/labelTerms"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_profile_info"
+        android:fontFamily="@font/opensans_regular"
+        android:text="@string/text_terms"
+        android:textAlignment="center"
+        android:textColor="@color/profileTitle"
+        android:textSize="@dimen/size_bottom_title"
+        android:layout_marginStart="@dimen/margin_label"
+        android:layout_marginEnd="@dimen/margin_label"
+        app:layout_constraintEnd_toEndOf="@id/endGuideline"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@id/registerButton" />
     
+
+
 
 
 

@@ -11,5 +11,8 @@
     <dimen name="margin_top_title">100dp</dimen>
     <dimen name="size_bottom_title">12sp</dimen>
     <dimen name="padding_text_checkBox">8dp</dimen>
+    <dimen name="size_register_button">16sp</dimen>
+    <dimen name="padding_register_button">20dp</dimen>
+    <dimen name="margin_label">60dp</dimen>
 
 </resources>

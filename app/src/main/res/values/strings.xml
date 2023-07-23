@@ -11,4 +11,7 @@
     <string name="label_email">E-mail</string>
     <string name="label_password">Password</string>
     <string name="remember_me">Remember me</string>
+    <string name="signUp_or">or</string>
+    <string name="text_register">register</string>
+    <string name="text_terms">By clicking Register you agree to our Terms and Conditions</string>
 </resources>
