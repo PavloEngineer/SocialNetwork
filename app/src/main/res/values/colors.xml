@@ -14,4 +14,6 @@
     <color name="orange">#FB5E06</color>
     <color name="light">#FFFFFF</color>
     <color name="greyAuth">#BDBDBD</color>
+    <color name="colorAccent">#00000000</color>
+
 </resources>

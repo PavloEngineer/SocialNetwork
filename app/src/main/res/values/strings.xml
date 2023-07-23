@@ -10,4 +10,5 @@
     <string name="label_bottom_title">Fill out the profile and go to the application!</string>
     <string name="label_email">E-mail</string>
     <string name="label_password">Password</string>
+    <string name="remember_me">Remember me</string>
 </resources>

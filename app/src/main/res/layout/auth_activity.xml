@@ -126,10 +126,27 @@
         android:autofillHints="emailAddress"
         android:labelFor="@id/labelPassword" />
 
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/checkboxRemember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@id/editPassword"
+        android:text="@string/remember_me"
+        android:textColor="@color/textJob"
+        android:fontFamily="@font/opensans_semibold"
+        android:layout_marginTop="@dimen/margin_profile_info"
+        android:button="@drawable/checkbox_border"
+        android:paddingStart="@dimen/padding_text_checkBox"
+        android:paddingEnd="@dimen/padding_text_checkBox"
+        />
+
     
 
 
 
+    
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
