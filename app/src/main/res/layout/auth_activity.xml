@@ -80,13 +80,15 @@
         android:layout_marginStart="@dimen/margin_profile_info"
         />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/profileTitle"
         android:textSize="@dimen/name_size_text"
         android:fontFamily="@font/opensans_semibold"
+        android:paddingStart="@dimen/margin_profile_info"
+        android:paddingEnd="@dimen/margin_profile_info"
         app:layout_constraintStart_toStartOf="@id/startGuideline"
         app:layout_constraintEnd_toEndOf="@id/endGuideline"
         app:layout_constraintTop_toBottomOf="@id/labelEmail"
@@ -110,13 +112,15 @@
         android:layout_marginStart="@dimen/margin_profile_info"
         />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/profileTitle"
         android:textSize="@dimen/name_size_text"
         android:fontFamily="@font/opensans_semibold"
+        android:paddingStart="@dimen/margin_profile_info"
+        android:paddingEnd="@dimen/margin_profile_info"
         app:layout_constraintStart_toStartOf="@id/startGuideline"
         app:layout_constraintEnd_toEndOf="@id/endGuideline"
         app:layout_constraintTop_toBottomOf="@id/labelPassword"
