@@ -3,6 +3,7 @@ package com.shpp.application.level_1
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.shpp.application.R
@@ -18,6 +19,7 @@ class AuthActivity : AppCompatActivity() {
 
         val emailField: TextInputEditText = findViewById(R.id.editEmail)
         val passwordField: TextInputEditText = findViewById(R.id.editPassword)
+        val registerButton: Button = findViewById(R.id.registerButton)
         addEmailListener(emailField)
         addPasswordListener(passwordField)
     }
