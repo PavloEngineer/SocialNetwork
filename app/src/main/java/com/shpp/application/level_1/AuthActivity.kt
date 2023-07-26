@@ -1,11 +1,17 @@
 package com.shpp.application.level_1
 
+import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MotionEvent
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import com.shpp.application.MainActivity
 import com.shpp.application.R
 
 /**
@@ -19,10 +25,26 @@ class AuthActivity : AppCompatActivity() {
 
         val emailField: TextInputEditText = findViewById(R.id.editEmail)
         val passwordField: TextInputEditText = findViewById(R.id.editPassword)
-        val registerButton: Button = findViewById(R.id.registerButton)
+        val registerButton: MaterialButton = findViewById(R.id.registerButton)
         addEmailListener(emailField)
         addPasswordListener(passwordField)
+
+        registerButton.setOnClickListener { v ->
+            startMainActivity(emailField, passwordField);
+        }
     }
+
+    /**
+     * Checks input value on error and goes to AuthActivity. Also sends email to next activity
+     */
+    private fun startMainActivity(emailField: TextInputEditText, passwordField: TextInputEditText) {
+        if (emailField.error == null && passwordField.error == null) {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra(Intent.EXTRA_TEXT, emailField.text.toString())
+            startActivity(intent)
+        }
+    }
+
 
     /**
      * Puts listener for validating email known as addTextChangedListener. Added logic validating
