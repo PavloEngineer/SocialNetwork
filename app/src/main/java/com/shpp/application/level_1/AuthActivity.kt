@@ -39,9 +39,9 @@ class AuthActivity : AppCompatActivity() {
      */
     private fun startMainActivity(emailField: TextInputEditText, passwordField: TextInputEditText) {
         if (emailField.error == null && passwordField.error == null) {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra(Intent.EXTRA_TEXT, emailField.text.toString())
-            startActivity(intent)
+            val intentToAuth = Intent(this, MainActivity::class.java)
+            intentToAuth.putExtra(Intent.EXTRA_TEXT, emailField.text.toString())
+            startActivity(intentToAuth)
         }
     }
 
