@@ -42,6 +42,8 @@ class AuthActivity : AppCompatActivity() {
             val intentToAuth = Intent(this, MainActivity::class.java)
             intentToAuth.putExtra(Intent.EXTRA_TEXT, emailField.text.toString())
             startActivity(intentToAuth)
+            overridePendingTransition(R.anim.slide_in_right,
+                R.anim.slide_out_left)
         }
     }
 
