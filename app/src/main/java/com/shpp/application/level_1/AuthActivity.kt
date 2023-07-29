@@ -55,8 +55,10 @@ class AuthActivity : AppCompatActivity() {
      * Checks input value on error and goes to AuthActivity. Also sends email to next activity
      */
     private fun startMainActivity(emailField: TextInputEditText, passwordField: TextInputEditText) {
-        if (emailField.error == null && passwordField.error == null) {
-            saveAuthLog(emailField, passwordField)
+        if (emailField.error == null && passwordField.error == null
+            && !emailField.text.isNullOrEmpty() && !passwordField.text.isNullOrEmpty()) {
+
+            saveAutoLog(emailField, passwordField)
             val intentToAuth = Intent(this, MainActivity::class.java)
             intentToAuth.putExtra(Intent.EXTRA_TEXT, emailField.text.toString())
             startActivity(intentToAuth)
@@ -65,7 +67,7 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveAuthLog(emailField: TextInputEditText, passwordField: TextInputEditText) {
+    private fun saveAutoLog(emailField: TextInputEditText, passwordField: TextInputEditText) {
         val checkRememberMe: AppCompatCheckBox = findViewById(R.id.checkboxRemember)
         sharedPref = getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
         if (checkRememberMe.isChecked) {
