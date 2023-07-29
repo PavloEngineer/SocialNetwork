@@ -1,5 +1,6 @@
 package com.shpp.application.level_1
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.ColorStateList
@@ -10,6 +11,7 @@ import android.text.TextWatcher
 import android.view.MotionEvent
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatCheckBox
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.shpp.application.MainActivity
@@ -21,7 +23,8 @@ import com.shpp.application.R
  */
 class AuthActivity : AppCompatActivity() {
 
-    private val sharedPref: SharedPreferences = TODO()
+    private lateinit var  sharedPref: SharedPreferences;
+    private val SHARED_PREF: String = "SHARED_PREFERENCES"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,9 +35,19 @@ class AuthActivity : AppCompatActivity() {
         val registerButton: MaterialButton = findViewById(R.id.registerButton)
         addEmailListener(emailField)
         addPasswordListener(passwordField)
+        autoLogin(emailField, passwordField)
 
         registerButton.setOnClickListener { v ->
             startMainActivity(emailField, passwordField);
+        }
+    }
+
+    private fun autoLogin(emailField: TextInputEditText, passwordField: TextInputEditText) {
+        sharedPref = getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
+        val allMapsFromShared = sharedPref.all;
+        if (allMapsFromShared.isNotEmpty()) {
+            emailField.setText(allMapsFromShared.keys.first())
+            passwordField.setText(allMapsFromShared[allMapsFromShared.keys.first()].toString())
         }
     }
 
@@ -53,7 +66,17 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun saveAuthLog(emailField: TextInputEditText, passwordField: TextInputEditText) {
-        val checkRememberMe:
+        val checkRememberMe: AppCompatCheckBox = findViewById(R.id.checkboxRemember)
+        sharedPref = getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
+        if (checkRememberMe.isChecked) {
+            sharedPref.edit()
+                .putString(emailField.text.toString(), passwordField.text.toString())
+                .apply()
+        } else {
+            sharedPref.edit()
+                .clear()
+                .apply()
+        }
     }
 
 
@@ -63,7 +86,8 @@ class AuthActivity : AppCompatActivity() {
      */
     private fun addEmailListener(emailField: TextInputEditText) {
         emailField.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
