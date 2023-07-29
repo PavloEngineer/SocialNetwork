@@ -1,6 +1,7 @@
 package com.shpp.application.level_1
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -19,6 +20,9 @@ import com.shpp.application.R
  * @author Pavlo Kokhanevych
  */
 class AuthActivity : AppCompatActivity() {
+
+    private val sharedPref: SharedPreferences = TODO()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.auth_activity)
@@ -39,12 +43,17 @@ class AuthActivity : AppCompatActivity() {
      */
     private fun startMainActivity(emailField: TextInputEditText, passwordField: TextInputEditText) {
         if (emailField.error == null && passwordField.error == null) {
+            saveAuthLog(emailField, passwordField)
             val intentToAuth = Intent(this, MainActivity::class.java)
             intentToAuth.putExtra(Intent.EXTRA_TEXT, emailField.text.toString())
             startActivity(intentToAuth)
             overridePendingTransition(R.anim.slide_in_right,
                 R.anim.slide_out_left)
         }
+    }
+
+    private fun saveAuthLog(emailField: TextInputEditText, passwordField: TextInputEditText) {
+        val checkRememberMe:
     }
 
 
