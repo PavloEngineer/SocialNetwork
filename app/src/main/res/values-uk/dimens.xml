@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="backdown">16dp</dimen>
+    <dimen name="title_size_text">24sp</dimen>
+    <dimen name="margin_profile">15dp</dimen>
+    <dimen name="margin_profile_info">10dp</dimen>
+    <dimen name="name_size_text">18sp</dimen>
+    <dimen name="job_size_text">14sp</dimen>
+    <dimen name="margin_click_profile">70dp</dimen>
+    <dimen name="margin_question">80dp</dimen>
+    <dimen name="margin_between_buttons">5dp</dimen>
+    <dimen name="margin_top_title">100dp</dimen>
+    <dimen name="size_bottom_title">12sp</dimen>
+    <dimen name="padding_text_checkBox">8dp</dimen>
+    <dimen name="size_register_button">16sp</dimen>
+    <dimen name="padding_register_button">20dp</dimen>
+    <dimen name="margin_label">60dp</dimen>
+
+</resources>

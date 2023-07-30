@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Мій додаток</string>
+    <string name="title_myProfile">Налаштування</string>
+    <string name="name_myProfile">Люсіль Альварадо</string>
+    <string name="job_myProfile">Графічний дизайнер</string>
+    <string name="home_address">5295 Гейлорд Уокс Apk. 110</string>
+    <string name="edit_button">Редагувати профіль</string>
+    <string name="view_contact_button">Переглянути мої контакти</string>
+    <string name="label_lets_get">Давай знайомитись</string>
+    <string name="label_bottom_title">Заповнюйте профіль і переходьте до програми!</string>
+    <string name="label_email">Електронна пошта</string>
+    <string name="label_password">Пароль</string>
+    <string name="remember_me">Запам\'ятати мене</string>
+    <string name="signUp_or">або</string>
+    <string name="text_register">зареєструватися</string>
+    <string name="text_terms">Натиснувши «Зареєструватися», ви погоджуєтеся з нашими Умовами</string>
+    <string name="text_question">Вже маєте акаунт?</string>
+    <string name="text_signIn">Увійти</string>
+</resources>
