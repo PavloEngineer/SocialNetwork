@@ -26,6 +26,10 @@ class AuthActivity : AppCompatActivity() {
      */
     private val SHARED_PREF: String = "SHARED_PREFERENCES"
 
+    private val EMAIL: String = "EMAIL"
+
+    private val PASSWORD: String = "PASSWORD"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.auth_activity)
@@ -53,8 +57,8 @@ class AuthActivity : AppCompatActivity() {
         sharedPref = getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
         val allMapsFromShared = sharedPref.all;
         if (allMapsFromShared.isNotEmpty()) {
-            emailField.setText(allMapsFromShared.keys.first())
-            passwordField.setText(allMapsFromShared[allMapsFromShared.keys.first()].toString())
+            emailField.setText(allMapsFromShared[EMAIL].toString())
+            passwordField.setText(allMapsFromShared[PASSWORD].toString())
         }
     }
 
@@ -92,7 +96,8 @@ class AuthActivity : AppCompatActivity() {
         sharedPref = getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
         if (checkBoxRemember.isChecked) {
             sharedPref.edit()
-                .putString(emailField.text.toString(), passwordField.text.toString())
+                .putString(PASSWORD, passwordField.text.toString())
+                .putString(EMAIL, emailField.text.toString())
                 .apply()
         } else {
             sharedPref.edit()
