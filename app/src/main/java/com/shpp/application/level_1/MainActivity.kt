@@ -1,9 +1,10 @@
-package com.shpp.application
+package com.shpp.application.level_1
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.shpp.application.R
 
 /**
  * Class for activation of user interaction processing with activity_main.
