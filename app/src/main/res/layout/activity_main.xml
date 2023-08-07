@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -47,12 +46,14 @@
         android:background="@color/profileBlue"
         />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/topGuideline"
-        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:layout_marginStart="@dimen/normal_margin"
         android:text="@string/title_myProfile"
         android:textColor="@color/profileTitle"
         android:textSize="@dimen/title_size_text"
@@ -61,9 +62,9 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/avatar"
-        android:layout_width="113dp"
-        android:layout_height="113dp"
-        android:src="@drawable/avatar"
+        android:layout_width="@dimen/photo_size"
+        android:layout_height="@dimen/photo_size"
+        android:src="@drawable/ic_avatar"
         app:shapeAppearanceOverlay="@style/circular"
         app:layout_constraintTop_toBottomOf ="@id/title"
         app:layout_constraintStart_toStartOf="@id/startGuideline"
@@ -79,9 +80,10 @@
         android:textSize="@dimen/name_size_text"
         app:fontFamily="@font/opensans_semibold"
         app:layout_constraintTop_toBottomOf="@id/avatar"
-        app:layout_constraintStart_toStartOf="@id/startGuideline"
-        app:layout_constraintEnd_toEndOf="@id/endGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/margin_profile"
+        app:layout_constraintHorizontal_bias="0.5"
         />
 
     <TextView
@@ -136,7 +138,7 @@
 
         />
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageButtonInst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -167,19 +169,20 @@
         android:layout_marginBottom="@dimen/margin_between_buttons"
         />
 
-    <com.google.android.material.button.MaterialButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/viewContactButton"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:text="@string/view_contact_button"
         android:fontFamily="@font/opensans_semibold"
-        android:textColor="@color/light"
+        android:textColor="@color/white"
+        android:background="@drawable/bc_view_my_contacts"
         android:textSize="@dimen/job_size_text"
         app:layout_constraintStart_toStartOf="@id/startGuideline"
         app:layout_constraintEnd_toEndOf="@id/endGuideline"
-        app:layout_constraintBottom_toBottomOf="@id/bottomGuideline"
-        android:backgroundTint="@color/orange"
-        app:cornerRadius="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/normal_margin"
+
         />
 
 

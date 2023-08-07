@@ -1,6 +1,5 @@
 package com.shpp.application.level_1
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -10,22 +9,22 @@ import com.shpp.application.R
  * Class for activation of user interaction processing with activity_main.
  * @author Pavlo Kokhanevych
  */
-class MainActivity: AppCompatActivity()  {
+class MainActivity: AppCompatActivity()  { // TODO: binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val fullName: TextView = findViewById(R.id.name)
-        changeTextNameView(fullName)
+        changeTextNameView()
     }
 
     /**
      * Gets text form intent, parses and changes name on activity_main.
      * @param fullName view for saving text
      */
-    private fun changeTextNameView(fullName: TextView) {
-        if (intent.hasExtra(Intent.EXTRA_TEXT)) {
-            fullName.text = parseEmail(intent.getStringExtra(Intent.EXTRA_TEXT).toString())
+    private fun changeTextNameView() {
+        if (intent.getStringExtra("data") != null) {
+            //binding.fullName.text = parseEmail(intent.getStringExtra("data").toString())
         }
     }
 

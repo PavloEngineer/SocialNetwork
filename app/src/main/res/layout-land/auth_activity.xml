@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/scrollView"
+
     android:fillViewport="true"
     android:background="@color/profileBlue">
 
@@ -140,7 +140,6 @@
             android:id="@+id/checkboxRemember"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
             app:layout_constraintStart_toStartOf="@id/startGuideline"
             app:layout_constraintTop_toBottomOf="@id/editPassword"
             android:text="@string/remember_me"
