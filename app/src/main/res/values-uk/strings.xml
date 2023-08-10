@@ -16,4 +16,5 @@
     <string name="text_terms">Натиснувши «Зареєструватися», ви погоджуєтеся з нашими Умовами</string>
     <string name="text_question">Вже маєте акаунт?</string>
     <string name="text_signIn">Увійти</string>
+    <string name="text_logOut">Вийти</string>
 </resources>

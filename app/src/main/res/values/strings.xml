@@ -21,4 +21,5 @@
     <string name="text_terms">By clicking Register you agree to our Terms and Conditions</string>
     <string name="text_question">Already have an account?</string>
     <string name="text_signIn">Sign in</string>
+    <string name="text_logOut">Log out</string>
 </resources>

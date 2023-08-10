@@ -1,38 +1,40 @@
 package com.shpp.application.level_1
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.shpp.application.R
+import com.shpp.application.databinding.ActivityMainBinding
 
-/**
- * Class for activation of user interaction processing with activity_main.
- * @author Pavlo Kokhanevych
- */
-class MainActivity: AppCompatActivity()  { // TODO: binding
+class MainActivity: AppCompatActivity()  {
+
+    private val binding: ActivityMainBinding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        val fullName: TextView = findViewById(R.id.name)
+        setContentView(binding.root)
+        binding.buttonLogOut.setOnClickListener { startAuthActivity(); }
         changeTextNameView()
     }
 
-    /**
-     * Gets text form intent, parses and changes name on activity_main.
-     * @param fullName view for saving text
-     */
+    private fun startAuthActivity() {
+        val intent = Intent(this@MainActivity, AuthActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(
+            R.anim.slide_in_left,
+            R.anim.slide_out_right
+        )
+
+    }
+
     private fun changeTextNameView() {
-        if (intent.getStringExtra("data") != null) {
-            //binding.fullName.text = parseEmail(intent.getStringExtra("data").toString())
+        if (intent.getStringExtra(Intent.EXTRA_TEXT) != null) {
+            binding.textName.text = parseEmail(intent.getStringExtra(Intent.EXTRA_TEXT).toString())
         }
     }
 
-    /**
-     * Parses email and creates something similar to a real name.
-     * Uses StringBuilder for changing text.
-     * @param stringExtra text from intent
-     */
     private fun parseEmail(stringExtra: String): CharSequence {
 
         // Cuts part text after '@'
