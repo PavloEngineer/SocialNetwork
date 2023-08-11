@@ -1,16 +1,17 @@
 <resources>
     <!-- app name -->
     <string name="app_name">My Application</string>
+
     <!-- profile screen -->
     <string name="title_myProfile">Settings</string>
     <string name="name_myProfile">Lucile Alvarado</string>
     <string name="job_myProfile">Graphic designer</string>
     <string name="home_address">5295 Gaylord Walks Apk. 110</string>
-
-    <!-- another screens -->
-
-    <string name="edit_button">Edit profile</string>
     <string name="view_contact_button">View my contacts</string>
+    <string name="edit_button">Edit profile</string>
+    <string name="text_logOut">Log out</string>
+
+    <!-- authentication screens -->
     <string name="label_lets_get">Let\'s get acquainted</string>
     <string name="label_bottom_title">Fill out the profile and go to the application!</string>
     <string name="label_email">E-mail</string>
@@ -21,5 +22,7 @@
     <string name="text_terms">By clicking Register you agree to our Terms and Conditions</string>
     <string name="text_question">Already have an account?</string>
     <string name="text_signIn">Sign in</string>
-    <string name="text_logOut">Log out</string>
+    <string name="error_email">Incorrect. Check syntax</string>
+    <string name="error_password">Unreliable password.Use upper and lower case, digits</string>
+
 </resources>

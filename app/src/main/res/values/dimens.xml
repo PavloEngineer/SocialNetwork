@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Margins -->
     <dimen name="largest_margin">70dp</dimen>
-    <dimen name="margin_top_title">100dp</dimen>
     <dimen name="small_margin">8dp</dimen>
-    <dimen name="small_padding">8dp</dimen>
-    <dimen name="normal_padding">20dp</dimen>
-    <dimen name="large_padding">34dp</dimen>
+    <dimen name="margin_top_title">100dp</dimen>
     <dimen name="large_margin">60dp</dimen>
     <dimen name="normal_margin">16dp</dimen>
+    <dimen name="label_margin">24dp</dimen>
+
+    <!-- Paddings -->
+    <dimen name="small_padding">8dp</dimen>
+    <dimen name="button_register_padding">12dp</dimen>
+    <dimen name="normal_padding">20dp</dimen>
+    <dimen name="large_padding">34dp</dimen>
+
+    <!-- Width and height -->
     <dimen name="photo_size_height">110dp</dimen>
     <dimen name="stroke_width">2dp</dimen>
-    <dimen name="label_margin">24dp</dimen>
+    <dimen name="width_button_register">312dp</dimen>
+    <dimen name="height_button">50dp</dimen>
     <dimen name="corner_radius">6dp</dimen>
 
-
-
+    <!-- Text size -->
     <dimen name="size_title_text">24sp</dimen>
     <dimen name="size_name_text">18sp</dimen>
     <dimen name="size_job_text">14sp</dimen>
     <dimen name="size_bottom_title">12sp</dimen>
     <dimen name="size_register_button">16sp</dimen>
 
-
-    <!--
-    small - 8dp
-    normal - 16dp
-    large - 24dp
-    mast large - 32dp
-    -->
 </resources>

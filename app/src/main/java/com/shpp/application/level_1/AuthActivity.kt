@@ -37,8 +37,8 @@ class AuthActivity : AppCompatActivity() {
     private fun autoLogin() {
         val allMapsFromShared = sharedPreferences.all;
         if (allMapsFromShared.isNotEmpty()) {
-            binding.editEmail?.setText(allMapsFromShared[EMAIL].toString())
-            binding.editPassword?.setText(allMapsFromShared[PASSWORD].toString())
+            binding.editEmail.setText(allMapsFromShared[EMAIL].toString())
+            binding.editPassword.setText(allMapsFromShared[PASSWORD].toString())
         }
     }
 
@@ -76,10 +76,9 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun addEmailListener() {
-        // TODO: delete not need methods
         binding.editEmail.doOnTextChanged { text, _, _, _ ->
             if (!isEmailCorrect(text.toString())) {
-                binding.editEmail.error = "Incorrect. Check syntax" // TODO: to res
+                binding.editEmail.error = resources.getString(R.string.error_email)
             } else {
                 binding.editEmail.error = null
             }
@@ -87,10 +86,9 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun addPasswordListener() {
-        // TODO: delete not need methods
         binding.editPassword.doOnTextChanged { text, _, _, _ ->
             if (!isPasswordCorrect(text.toString())) {
-                binding.editPassword.error = "Unreliable password.Use upper and lower case, digits" // TODO: to res
+                binding.editPassword.error = resources.getString(R.string.error_password)
             } else {
                 binding.editPassword.error = null
             }
@@ -101,7 +99,7 @@ class AuthActivity : AppCompatActivity() {
             val hasNumberAndLetter: Boolean = password.any { it.isDigit() } &&
                     password.any { it.isUpperCase() } &&
                     password.any{ it.isLowerCase()}
-            return !(password.length < MIN_LENGTH_PASSWORD || !hasNumberAndLetter) // TODO: length to constants
+            return !(password.length < MIN_LENGTH_PASSWORD || !hasNumberAndLetter)
     }
 
     private fun isEmailCorrect(textEmail: String) = Regex("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$").matches(textEmail)
