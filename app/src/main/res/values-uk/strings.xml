@@ -26,4 +26,8 @@
     <string name="error_email">Невірно.Перевірте синтаксис</string>
     <string name="error_password">Поганий пароль.Використовуйте нижній та верхній регістр, цифри</string>
 
+    <!-- My contacts screen -->
+    <string name="text_contacts" >Контакти</string>
+    <string name="add_contacts" >Додати контакти</string>
+
 </resources>

@@ -14,6 +14,9 @@
     <color name="textEditButton">#18181F</color>
     <color name="orange">#FB5E06</color>
     <color name="light">#FFFFFF</color>
+    <color name="itemContactColor">#F9F9F9</color>
+    <color name="itemNameColor">#18181F</color>
+    <color name="itemJobColor">#828282</color>
     <color name="greyAuth">#BDBDBD</color>
     <color name="colorAccent">#00000000</color>
 </resources>

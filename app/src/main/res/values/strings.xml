@@ -11,7 +11,7 @@
     <string name="edit_button">Edit profile</string>
     <string name="text_logOut">Log out</string>
 
-    <!-- authentication screens -->
+    <!-- authentication screen -->
     <string name="label_lets_get">Let\'s get acquainted</string>
     <string name="label_bottom_title">Fill out the profile and go to the application!</string>
     <string name="label_email">E-mail</string>
@@ -24,5 +24,10 @@
     <string name="text_signIn">Sign in</string>
     <string name="error_email">Incorrect. Check syntax</string>
     <string name="error_password">Unreliable password.Use upper and lower case, digits</string>
+
+
+    <!-- My contacts screen -->
+    <string name="text_contacts" >Contacts</string>
+    <string name="add_contacts" >Add contacts</string>
 
 </resources>

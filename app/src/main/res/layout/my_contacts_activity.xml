@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:id="@+id/viewBar"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/view_height"
+        android:background="@color/profileBlue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/baselineBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:backgroundTint="@color/colorAccent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:layout_marginStart="@dimen/normal_margin"
+        app:layout_constraintEnd_toStartOf="@id/textContactsView"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textContactsView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/baselineBack"
+        app:layout_constraintEnd_toStartOf="@id/baselineSearch"
+        app:layout_constraintTop_toTopOf="@id/baselineBack"
+        android:text="@string/text_contacts"
+        android:textColor="@color/profileTitle"
+        android:textSize="@dimen/large_title_text"
+        android:fontFamily="@font/opensans_semibold"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/baselineSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_search_24"
+        android:backgroundTint="@color/colorAccent"
+        app:layout_constraintTop_toTopOf="@id/baselineBack"
+        app:layout_constraintStart_toEndOf="@id/textContactsView"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/normal_margin"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonAddContacts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_contacts"
+        android:textColor="@color/profileTitle"
+        android:textSize="@dimen/size_job_text"
+        android:fontFamily="@font/opensans_semibold"
+        android:backgroundTint="@color/colorAccent"
+        android:background="@color/colorAccent"
+        android:textAllCaps="false"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/baselineBack"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
