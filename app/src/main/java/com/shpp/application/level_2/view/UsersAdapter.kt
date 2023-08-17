@@ -3,11 +3,32 @@ package com.shpp.application.level_2.view
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shpp.application.R
 import com.shpp.application.databinding.ItemUserBinding
 import com.shpp.application.level_2.model.User
+
+
+class UserDiffCallBack (
+    private val oldList: List<User>,
+    private val newList: List<User>
+        ): DiffUtil.Callback() {
+    override fun getOldListSize(): Int = oldList.size
+
+    override fun getNewListSize(): Int = newList.size
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldList[oldItemPosition].id == newList[newItemPosition].id
+    }
+
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+       return oldList[oldItemPosition] == newList[newItemPosition]
+    }
+
+
+}
 
 class UsersAdapter: RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
 
@@ -18,10 +39,11 @@ class UsersAdapter: RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
 
 
     var users: List<User> = emptyList()
-        @SuppressLint("NotifyDataSetChanged")
         set(value) {
+            val diffUtil = UserDiffCallBack(field, value)
+            val diffResult = DiffUtil.calculateDiff(diffUtil)
             field = value;
-            notifyDataSetChanged()
+            diffResult.dispatchUpdatesTo(this)
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersViewHolder {

@@ -35,9 +35,10 @@
         app:layout_constraintStart_toEndOf="@id/baselineBack"
         app:layout_constraintEnd_toStartOf="@id/baselineSearch"
         app:layout_constraintTop_toTopOf="@id/baselineBack"
+        app:layout_constraintBottom_toBottomOf="@id/baselineBack"
         android:text="@string/text_contacts"
         android:textColor="@color/profileTitle"
-        android:textSize="@dimen/large_title_text"
+        android:textSize="@dimen/size_title_text"
         android:fontFamily="@font/opensans_semibold"
         />
 

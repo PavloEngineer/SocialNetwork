@@ -64,7 +64,7 @@
         app:layout_constraintStart_toEndOf="@id/name"
         app:layout_constraintTop_toTopOf="@id/avatarUser"
         app:layout_constraintBottom_toBottomOf="@id/avatarUser"
-        tools:src = "@drawable/ic_basket"
+        android:src="@drawable/ic_basket"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

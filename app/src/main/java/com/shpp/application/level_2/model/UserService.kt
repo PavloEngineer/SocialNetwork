@@ -26,6 +26,7 @@ class UserService {
     }
 
     fun deleteUser(user: User) {
+        users = ArrayList(users)
         users.remove(user)
         notifyChanges()
     }
@@ -45,13 +46,13 @@ class UserService {
 
     companion object {
         private val IMAGES = mutableListOf(
-            "https://www.google.com/url?sa=i&url=https%3A%2F%2Faniyuki.com%2Fru%2Fgrustnye-anime-avatarki%2F&psig=AOvVaw0EZlQmSCnDHtnj6iznOoNv&ust=1692086760820000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOi6lqTY24ADFQAAAAAdAAAAABAL",
-            "https://www.google.com/url?sa=i&url=https%3A%2F%2Faniyuki.com%2Fru%2Favatarki-zxc-70-foto%2F&psig=AOvVaw0EZlQmSCnDHtnj6iznOoNv&ust=1692086760820000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOi6lqTY24ADFQAAAAAdAAAAABAU",
-            "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftgstat.ru%2Fen%2Fchannel%2F%40kawaiianimeavatarochki&psig=AOvVaw0EZlQmSCnDHtnj6iznOoNv&ust=1692086760820000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOi6lqTY24ADFQAAAAAdAAAAABAd",
-            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fklike.net%2F1345-kartinki-na-avatarku-50-foto.html&psig=AOvVaw0EZlQmSCnDHtnj6iznOoNv&ust=1692086760820000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOi6lqTY24ADFQAAAAAdAAAAABAm",
-            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fotkrit-ka.ru%2F14051-prikolnye-multjashnye-avatarki.html&psig=AOvVaw0EZlQmSCnDHtnj6iznOoNv&ust=1692086760820000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOi6lqTY24ADFQAAAAAdAAAAABAw",
-            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.volynpost.com%2Fnews%2F30370-nova-fishka-socmerezh-patriotychni-avatarky-foto&psig=AOvVaw0EZlQmSCnDHtnj6iznOoNv&ust=1692086760820000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOi6lqTY24ADFQAAAAAdAAAAABA5",
-            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdzen.ru%2Fa%2FYLMimTIE7WECrGu4&psig=AOvVaw0EZlQmSCnDHtnj6iznOoNv&ust=1692086760820000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOi6lqTY24ADFQAAAAAdAAAAABBC"
+            "https://gravatar.com/avatar/ca09089ce4e4f4a5c1c408ab22d22a91?s=400&d=robohash&r=x",
+            "https://gravatar.com/avatar/efd6858a5f746140ea07cec5733c7c74?s=400&d=robohash&r=x",
+            "https://gravatar.com/avatar/8d615a2a1b27c4c3297fa5124305cbfc?s=400&d=robohash&r=x",
+            "https://gravatar.com/avatar/a7bb3266897ad708becc0a5eaff0b557?s=400&d=robohash&r=x",
+            "https://gravatar.com/avatar/e8f8c55bac6dc304540845c281f3783b?s=400&d=robohash&r=x",
+            "https://gravatar.com/avatar/3a6bdb5d04f18e2fa215b69cc43a50c4?s=400&d=robohash&r=x",
+            "https://gravatar.com/avatar/ba79001e355f4092cd4b47df9d1070a2?s=400&d=robohash&r=x"
         )
     }
 
