@@ -1,5 +1,4 @@
 package com.shpp.application.level_2.model
-
 import com.github.javafaker.Faker
 
 typealias UserListeners = (users: List<User>) -> Unit

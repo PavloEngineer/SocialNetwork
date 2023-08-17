@@ -2,11 +2,14 @@ package com.shpp.application.level_2.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shpp.application.databinding.MyContactsActivityBinding
 import com.shpp.application.level_2.App
 import com.shpp.application.level_2.model.UserListeners
-import com.shpp.application.level_2.model.UserService
+import com.shpp.application.level_2.viewModel.MyContactsViewModel
+import com.shpp.application.level_2.viewModel.MyContactsViewModelFactory
 
 class MyContactsActivity: AppCompatActivity() {
 
@@ -16,26 +19,26 @@ class MyContactsActivity: AppCompatActivity() {
 
     private lateinit var adapter: UsersAdapter
 
-    private val userService:UserService
-    get() = (applicationContext as App).userService
+    private lateinit var viewModel: MyContactsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         adapter = UsersAdapter()
+        val viewModelFactory = MyContactsViewModelFactory(App())
+        viewModel = ViewModelProvider(this, viewModelFactory)
+            .get(MyContactsViewModel::class.java)
+
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerUsers.layoutManager = layoutManager
         binding.recyclerUsers.adapter = adapter
-        userService.addListener(usersListener)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        userService.deleteListener(usersListener)
-    }
-
-    private val usersListener: UserListeners = {
-        adapter.users = it
+    override fun onStart() {
+        super.onStart()
+        viewModel.users.observe(this, Observer{
+            adapter.users = it
+        })
     }
 }
