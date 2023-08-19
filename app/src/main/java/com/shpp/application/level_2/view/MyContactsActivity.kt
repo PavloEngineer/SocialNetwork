@@ -24,11 +24,11 @@ class MyContactsActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        adapter = UsersAdapter()
         val viewModelFactory = MyContactsViewModelFactory(App())
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(MyContactsViewModel::class.java)
 
+        adapter = UsersAdapter(viewModel)
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerUsers.layoutManager = layoutManager
@@ -41,4 +41,6 @@ class MyContactsActivity: AppCompatActivity() {
             adapter.users = it
         })
     }
+
+
 }

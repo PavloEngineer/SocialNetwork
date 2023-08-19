@@ -1,6 +1,7 @@
 package com.shpp.application.level_2.view
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
@@ -8,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shpp.application.R
 import com.shpp.application.databinding.ItemUserBinding
+import com.shpp.application.level_2.App
 import com.shpp.application.level_2.model.User
+import com.shpp.application.level_2.viewModel.MyContactsViewModel
 import com.squareup.picasso.Picasso
 
 
@@ -30,7 +33,9 @@ class UserDiffCallBack(
 
 }
 
-class UsersAdapter : RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
+class UsersAdapter(
+    private val myContactsViewModel: MyContactsViewModel
+) : RecyclerView.Adapter<UsersAdapter.UsersViewHolder>(), View.OnClickListener {
 
 
     class UsersViewHolder(
@@ -57,6 +62,8 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
         with(holder.binding) {
             name.text = user.name
             job.text = user.job
+            basket.tag = user
+            basket.setOnClickListener(this@UsersAdapter)
             avatarUser.downloadAndPutPhotoGlide(avatarUser, R.drawable.ic_user_avatar, user.photo)
         }
     }
@@ -95,4 +102,13 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
     }
 
     override fun getItemCount(): Int = users.size
+
+    override fun onClick(v: View) {
+        val user = v.tag as User
+        when (v.id) {
+            R.id.basket -> {
+                myContactsViewModel.deleteUsers(user)
+            }
+        }
+    }
 }

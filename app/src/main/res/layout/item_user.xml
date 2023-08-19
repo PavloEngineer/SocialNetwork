@@ -9,7 +9,8 @@
    android:paddingHorizontal="@dimen/small_padding"
     android:paddingVertical="@dimen/small_padding"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemHolder">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/avatarUser"
