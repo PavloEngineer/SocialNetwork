@@ -2,18 +2,20 @@ package com.shpp.application.level_2.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shpp.application.R
 import com.shpp.application.databinding.ItemUserBinding
 import com.shpp.application.level_2.model.User
+import com.squareup.picasso.Picasso
 
 
-class UserDiffCallBack (
+class UserDiffCallBack(
     private val oldList: List<User>,
     private val newList: List<User>
-        ): DiffUtil.Callback() {
+) : DiffUtil.Callback() {
     override fun getOldListSize(): Int = oldList.size
 
     override fun getNewListSize(): Int = newList.size
@@ -23,18 +25,17 @@ class UserDiffCallBack (
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-       return oldList[oldItemPosition] == newList[newItemPosition]
+        return oldList[oldItemPosition] == newList[newItemPosition]
     }
-
 
 }
 
-class UsersAdapter: RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
+class UsersAdapter : RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
 
 
-    class UsersViewHolder (
+    class UsersViewHolder(
         val binding: ItemUserBinding
-    ):RecyclerView.ViewHolder(binding.root)
+    ) : RecyclerView.ViewHolder(binding.root)
 
 
     var users: List<User> = emptyList()
@@ -46,7 +47,7 @@ class UsersAdapter: RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersViewHolder {
-       val inflater = LayoutInflater.from(parent.context)
+        val inflater = LayoutInflater.from(parent.context)
         val binding = ItemUserBinding.inflate(inflater, parent, false)
         return UsersViewHolder(binding)
     }
@@ -56,16 +57,40 @@ class UsersAdapter: RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
         with(holder.binding) {
             name.text = user.name
             job.text = user.job
-            if (user.photo.isNotBlank()) {
-                Glide.with(avatarUser.context)
-                    .load(user.photo)
-                    .circleCrop()
-                    .placeholder(R.drawable.ic_user_avatar)
-                    .error(R.drawable.ic_user_avatar)
-                    .into(avatarUser)
-            } else {
-                avatarUser.setImageResource(R.drawable.ic_user_avatar)
-            }
+            avatarUser.downloadAndPutPhotoGlide(avatarUser, R.drawable.ic_user_avatar, user.photo)
+        }
+    }
+
+    private fun ImageView.downloadAndPutPhotoGlide(
+        imageView: ImageView,
+        defauldPhotoId: Int,
+        link: String
+    ) {
+        if (link.isNotBlank()) {
+            Glide.with(imageView.context)
+                .load(link)
+                .circleCrop()
+                .placeholder(defauldPhotoId)
+                .error(defauldPhotoId)
+                .into(imageView)
+        } else {
+            imageView.setImageResource(defauldPhotoId)
+        }
+    }
+
+    private fun ImageView.downloadAndPutPhotoPicasso(
+        imageView: ImageView,
+        defauldPhotoId: Int,
+        link: String
+    ) {
+        if (link.isNotBlank()) {
+            Picasso.with(imageView.context)
+                .load(link)
+                .placeholder(defauldPhotoId)
+                .error(defauldPhotoId)
+                .into(this)
+        } else {
+            imageView.setImageResource(defauldPhotoId)
         }
     }
 

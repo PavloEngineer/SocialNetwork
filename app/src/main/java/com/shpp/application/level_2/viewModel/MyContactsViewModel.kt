@@ -7,20 +7,16 @@ import com.shpp.application.level_2.model.UserListeners
 import com.shpp.application.level_2.model.UserService
 
 class MyContactsViewModel(
-    private val usersService : UserService
+    private val usersService: UserService
 ) : ViewModel() {
 
     private val usersPrivate = MutableLiveData<List<User>>()
-    val users : MutableLiveData<List<User>> = usersPrivate
+    val users: MutableLiveData<List<User>> = usersPrivate
     private var listener: UserListeners = {
         usersPrivate.value = it
     }
 
     init {
-        listener = {
-            usersPrivate.value = it
-        }
-
         loadUsers()
     }
 
@@ -34,9 +30,8 @@ class MyContactsViewModel(
         usersService.addListener(listener)
     }
 
-    fun deleteUsers (user: User){
+    fun deleteUsers(user: User) {
         usersService.deleteUser(user)
     }
-
 
 }
