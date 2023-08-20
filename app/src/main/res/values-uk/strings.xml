@@ -29,5 +29,7 @@
     <!-- My contacts screen -->
     <string name="text_contacts" >Контакти</string>
     <string name="add_contacts" >Додати контакти</string>
+    <string name="snackbar_removed" >Видалено!</string>
+    <string name="snackbar_undo" >Відмінити</string>
 
 </resources>

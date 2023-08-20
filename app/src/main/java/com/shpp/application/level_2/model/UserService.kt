@@ -30,6 +30,12 @@ class UserService {
         notifyChanges()
     }
 
+    fun addUser(user: User, index: Int) {
+        users = ArrayList(users)
+        users.add(index, user)
+        notifyChanges()
+    }
+
     fun addListener(listener: UserListeners) {
         listeners.add(listener)
         listener.invoke(users)

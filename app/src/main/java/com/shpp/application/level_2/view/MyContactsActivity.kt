@@ -4,10 +4,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.shpp.application.R
 import com.shpp.application.databinding.MyContactsActivityBinding
 import com.shpp.application.level_2.App
-import com.shpp.application.level_2.model.UserListeners
 import com.shpp.application.level_2.viewModel.MyContactsViewModel
 import com.shpp.application.level_2.viewModel.MyContactsViewModelFactory
 
@@ -28,11 +29,14 @@ class MyContactsActivity: AppCompatActivity() {
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(MyContactsViewModel::class.java)
 
-        adapter = UsersAdapter(viewModel)
+        adapter = UsersAdapter(viewModel, binding, resources.getString(R.string.snackbar_removed))
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerUsers.layoutManager = layoutManager
         binding.recyclerUsers.adapter = adapter
+
+        val itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback(adapter))
+        itemTouchHelper.attachToRecyclerView(binding.recyclerUsers)
     }
 
     override fun onStart() {

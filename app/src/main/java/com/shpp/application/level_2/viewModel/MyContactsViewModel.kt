@@ -30,8 +30,12 @@ class MyContactsViewModel(
         usersService.addListener(listener)
     }
 
-    fun deleteUsers(user: User) {
+    fun deleteUser(user: User) {
         usersService.deleteUser(user)
+    }
+
+    fun addUser(user: User, index: Int) {
+        usersService.addUser(user, index)
     }
 
 }

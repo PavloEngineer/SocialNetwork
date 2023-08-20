@@ -1,5 +1,9 @@
 package com.shpp.application.level_2.view
 
+import android.content.Context
+import android.os.CountDownTimer
+import android.provider.Settings.Secure.getString
+import android.provider.Settings.System.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,8 +11,10 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.shpp.application.R
 import com.shpp.application.databinding.ItemUserBinding
+import com.shpp.application.databinding.MyContactsActivityBinding
 import com.shpp.application.level_2.App
 import com.shpp.application.level_2.model.User
 import com.shpp.application.level_2.viewModel.MyContactsViewModel
@@ -34,14 +40,15 @@ class UserDiffCallBack(
 }
 
 class UsersAdapter(
-    private val myContactsViewModel: MyContactsViewModel
+    val myContactsViewModel: MyContactsViewModel,
+    private val contactsBinding: MyContactsActivityBinding,
+    private val massageSnackBar: String
 ) : RecyclerView.Adapter<UsersAdapter.UsersViewHolder>(), View.OnClickListener {
 
 
     class UsersViewHolder(
         val binding: ItemUserBinding
     ) : RecyclerView.ViewHolder(binding.root)
-
 
     var users: List<User> = emptyList()
         set(value) {
@@ -107,8 +114,30 @@ class UsersAdapter(
         val user = v.tag as User
         when (v.id) {
             R.id.basket -> {
-                myContactsViewModel.deleteUsers(user)
+                val index: Int = myContactsViewModel.users.value?.indexOf(user) ?: -1;
+                myContactsViewModel.deleteUser(user)
+                undoDelete(user, index)
             }
         }
+    }
+
+     fun undoDelete(user: User, index: Int) {
+        val snackBar = Snackbar.make(contactsBinding.myContactsView, R.string.snackbar_removed, Snackbar.LENGTH_INDEFINITE)
+        snackBar.setAction(R.string.snackbar_undo) {
+            myContactsViewModel.addUser(user, index)
+        }
+
+        val timer = object : CountDownTimer(5000, 1000) { // 5000 мс = 5 секунд
+            override fun onTick(millisUntilFinished: Long) {
+                // Вивід таймеру
+                snackBar.setText(massageSnackBar + " ${millisUntilFinished / 1000}")
+            }
+
+            override fun onFinish() {
+                snackBar.dismiss() // Закриття SnackBar після завершення таймера
+            }
+        }
+        timer.start()
+        snackBar.show()
     }
 }
