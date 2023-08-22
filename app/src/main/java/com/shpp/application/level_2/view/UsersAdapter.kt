@@ -1,9 +1,6 @@
 package com.shpp.application.level_2.view
 
-import android.content.Context
 import android.os.CountDownTimer
-import android.provider.Settings.Secure.getString
-import android.provider.Settings.System.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,6 +46,7 @@ class UsersAdapter(
     class UsersViewHolder(
         val binding: ItemUserBinding
     ) : RecyclerView.ViewHolder(binding.root)
+
 
     var users: List<User> = emptyList()
         set(value) {
@@ -121,8 +119,12 @@ class UsersAdapter(
         }
     }
 
-     fun undoDelete(user: User, index: Int) {
-        val snackBar = Snackbar.make(contactsBinding.myContactsView, R.string.snackbar_removed, Snackbar.LENGTH_INDEFINITE)
+    fun undoDelete(user: User, index: Int) {
+        val snackBar = Snackbar.make(
+            contactsBinding.myContactsView,
+            R.string.snackbar_removed,
+            Snackbar.LENGTH_INDEFINITE
+        )
         snackBar.setAction(R.string.snackbar_undo) {
             myContactsViewModel.addUser(user, index)
         }

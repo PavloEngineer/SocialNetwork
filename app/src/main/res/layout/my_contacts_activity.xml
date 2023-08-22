@@ -79,7 +79,18 @@
         app:layout_constraintTop_toBottomOf="@id/viewBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        />
 
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/buttonScroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="@dimen/normal_margin"
+        android:layout_marginBottom="@dimen/normal_margin"
+        android:src="@drawable/ic_scroll_up"
+        android:backgroundTint="@color/colorAccent"
         />
 
 
