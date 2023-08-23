@@ -32,4 +32,12 @@
     <string name="snackbar_removed" >Видалено!</string>
     <string name="snackbar_undo" >Відмінити</string>
 
+    <!-- Add contact dialog -->
+    <string name="add_contact">Додати контакт</string>
+    <string name="label_username">Ім\'я</string>
+    <string name="label_career">Професія</string>
+    <string name="label_phone">Телефон</string>
+    <string name="label_address">Адреса</string>
+    <string name="label_birth">Дата народження</string>
+    <string name="save">Зберегти</string>
 </resources>

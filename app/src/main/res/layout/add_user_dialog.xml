@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ExtraText">
+
+        <View
+            android:id="@+id/viewBar"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/large_view_height"
+            android:background="@color/profileBlue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/baselineBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:backgroundTint="@color/colorAccent"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textAddContactView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/opensans_semibold"
+            android:text="@string/add_contact"
+            android:textColor="@color/profileTitle"
+            android:textSize="@dimen/size_title_text"
+            app:layout_constraintBottom_toBottomOf="@id/baselineBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/baselineBack" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/avatar"
+            android:layout_width="@dimen/margin_top_title"
+            android:layout_height="@dimen/photo_size_height"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:src="@drawable/ic_avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textAddContactView"
+            app:shapeAppearanceOverlay="@style/circular" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/buttonAddPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:backgroundTint="@color/colorAccent"
+            android:src="@drawable/ic_add_photo"
+            app:layout_constraintBottom_toBottomOf="@id/avatar"
+            app:layout_constraintStart_toEndOf="@id/avatar"
+            app:layout_constraintTop_toTopOf="@id/avatar" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/labelUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/label_margin"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:fontFamily="@font/opensans_semibold"
+            android:text="@string/label_username"
+            android:textColor="@color/greyAuth"
+            android:textSize="@dimen/size_job_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewBar" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editUsername"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:backgroundTint="@color/greyAuth"
+            android:fontFamily="@font/opensans_semibold"
+            android:inputType="text"
+            android:labelFor="@id/labelUsername"
+            android:paddingStart="@dimen/small_padding"
+            android:paddingEnd="@dimen/small_padding"
+            android:textColor="@color/itemNameColor"
+            android:textSize="@dimen/size_name_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelUsername"
+            android:hint="@string/hint_username"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/labelCareer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/label_margin"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:fontFamily="@font/opensans_semibold"
+            android:text="@string/label_career"
+            android:textColor="@color/greyAuth"
+            android:textSize="@dimen/size_job_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editUsername" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editCareer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:backgroundTint="@color/greyAuth"
+            android:fontFamily="@font/opensans_semibold"
+            android:inputType="text"
+            android:labelFor="@id/labelCareer"
+            android:paddingStart="@dimen/small_padding"
+            android:paddingEnd="@dimen/small_padding"
+            android:textColor="@color/itemNameColor"
+            android:textSize="@dimen/size_name_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelCareer"
+            android:hint="@string/hint_career"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/labelEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/label_margin"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:fontFamily="@font/opensans_semibold"
+            android:text="@string/label_email"
+            android:textColor="@color/greyAuth"
+            android:textSize="@dimen/size_job_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editCareer" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:autofillHints="emailAddress"
+            android:backgroundTint="@color/greyAuth"
+            android:fontFamily="@font/opensans_semibold"
+            android:inputType="textEmailAddress"
+            android:labelFor="@id/labelEmail"
+            android:paddingStart="@dimen/small_padding"
+            android:paddingEnd="@dimen/small_padding"
+            android:textColor="@color/itemNameColor"
+            android:textSize="@dimen/size_name_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelEmail"
+            android:hint="@string/hint_email"
+        />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/labelPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/label_margin"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:fontFamily="@font/opensans_semibold"
+            android:text="@string/label_phone"
+            android:textColor="@color/greyAuth"
+            android:textSize="@dimen/size_job_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editEmail" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editPhone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:backgroundTint="@color/greyAuth"
+            android:fontFamily="@font/opensans_semibold"
+            android:inputType="phone"
+            android:labelFor="@id/labelPhone"
+            android:paddingStart="@dimen/small_padding"
+            android:paddingEnd="@dimen/small_padding"
+            android:textColor="@color/itemNameColor"
+            android:textSize="@dimen/size_name_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelPhone"
+            android:hint="@string/hint_number"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/labelAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/label_margin"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:fontFamily="@font/opensans_semibold"
+            android:text="@string/label_address"
+            android:textColor="@color/greyAuth"
+            android:textSize="@dimen/size_job_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editPhone" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:backgroundTint="@color/greyAuth"
+            android:fontFamily="@font/opensans_semibold"
+            android:inputType="text"
+            android:labelFor="@id/labelAddress"
+            android:paddingStart="@dimen/small_padding"
+            android:paddingEnd="@dimen/small_padding"
+            android:textColor="@color/itemNameColor"
+            android:textSize="@dimen/size_name_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelAddress" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/labelBirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/label_margin"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:fontFamily="@font/opensans_semibold"
+            android:text="@string/label_birth"
+            android:textColor="@color/greyAuth"
+            android:textSize="@dimen/size_job_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editAddress" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editBirth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:backgroundTint="@color/greyAuth"
+            android:fontFamily="@font/opensans_semibold"
+            android:inputType="date"
+            android:labelFor="@id/labelBirth"
+            android:paddingStart="@dimen/small_padding"
+            android:paddingEnd="@dimen/small_padding"
+            android:textColor="@color/itemNameColor"
+            android:textSize="@dimen/size_name_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelBirth" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonSave"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_marginHorizontal="@dimen/normal_margin"
+            android:layout_marginVertical="@dimen/normal_margin"
+            android:background="@drawable/bc_view_my_contacts"
+            android:fontFamily="@font/opensans_semibold"
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_register_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editBirth"
+
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

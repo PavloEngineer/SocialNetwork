@@ -22,6 +22,7 @@
     <dimen name="height_button">50dp</dimen>
     <dimen name="corner_radius">6dp</dimen>
     <dimen name="view_height">140dp</dimen>
+    <dimen name="large_view_height">200dp</dimen>
     <dimen name="size_user_avatar">48dp</dimen>
 
     <!-- Text size -->

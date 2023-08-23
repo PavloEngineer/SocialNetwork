@@ -32,4 +32,17 @@
     <string name="snackbar_removed" >Removed!</string>
     <string name="snackbar_undo" >Undo</string>
 
+    <!-- Add contact dialog -->
+    <string name="add_contact">Add contact</string>
+    <string name="label_username">Username</string>
+    <string name="label_career">Career</string>
+    <string name="label_phone">Phone</string>
+    <string name="label_address">Address</string>
+    <string name="label_birth">Date of birth</string>
+    <string name="save">Save</string>
+    <string name="hint_email" translatable="false">name@gmail.com</string>
+    <string name="hint_number" translatable="false">(264)-654-3762</string>
+    <string name="hint_username" translatable="false">Pavlo Kokhanevych</string>
+    <string name="hint_career" translatable="false">Android Developer</string>
+
 </resources>
