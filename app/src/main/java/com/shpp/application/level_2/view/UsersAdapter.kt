@@ -119,6 +119,7 @@ class UsersAdapter(
         }
     }
 
+
     fun undoDelete(user: User, index: Int) {
         val snackBar = Snackbar.make(
             contactsBinding.myContactsView,

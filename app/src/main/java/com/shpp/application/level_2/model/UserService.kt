@@ -11,12 +11,15 @@ class UserService {
     init {
         val faker: Faker = Faker.instance()
         IMAGES.shuffle()
-        users = (1..30).map { User (
+        users = (1..15).map { User (
             id = it.toInt(),
             name = faker.name().name(),
             job = faker.job().position(),
             address = faker.address().fullAddress(),
-            photo = IMAGES[ it % IMAGES.size]
+            email = faker.random().toString(),
+            birth = faker.date().birthday().toString(),
+            photo = IMAGES[ it % IMAGES.size],
+            phone = faker.phoneNumber().phoneNumber()
         ) } as MutableList<User>
     }
 
@@ -33,6 +36,12 @@ class UserService {
     fun addUser(user: User, index: Int) {
         users = ArrayList(users)
         users.add(index, user)
+        notifyChanges()
+    }
+
+    fun addUser(user: User) {
+        users = ArrayList(users)
+        users.add(user)
         notifyChanges()
     }
 

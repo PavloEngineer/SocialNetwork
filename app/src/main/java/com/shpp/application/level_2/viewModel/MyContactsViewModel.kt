@@ -38,4 +38,8 @@ class MyContactsViewModel(
         usersService.addUser(user, index)
     }
 
+    fun addUser(user: User) {
+        usersService.addUser(user)
+    }
+
 }

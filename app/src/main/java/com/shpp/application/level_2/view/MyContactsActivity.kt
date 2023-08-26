@@ -1,5 +1,6 @@
 package com.shpp.application.level_2.view
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -9,8 +10,10 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shpp.application.R
+import com.shpp.application.databinding.AddUserDialogBinding
 import com.shpp.application.databinding.MyContactsActivityBinding
 import com.shpp.application.level_2.App
+import com.shpp.application.level_2.model.User
 import com.shpp.application.level_2.viewModel.MyContactsViewModel
 import com.shpp.application.level_2.viewModel.MyContactsViewModelFactory
 
@@ -60,6 +63,33 @@ class MyContactsActivity: AppCompatActivity() {
         binding.buttonScroll.setOnClickListener {
             binding.recyclerUsers.smoothScrollToPosition(0)
         }
+
+        binding.buttonAddContacts.setOnClickListener {
+                val dialogLayout = layoutInflater.inflate(R.layout.add_user_dialog, binding.root, false)
+                val dialogBuilder = AlertDialog.Builder(this)
+                dialogBuilder.setView(dialogLayout)
+
+                val dialog = dialogBuilder.create()
+
+                val bindingAdd = AddUserDialogBinding.bind(dialogLayout)
+
+                bindingAdd.buttonSave.setOnClickListener {
+                    with(bindingAdd) {
+                        val user = User(
+                            name = editUsername.text.toString(),
+                            job = editCareer.text.toString(),
+                            address = editAddress.text.toString(),
+                            email = editEmail.text.toString(),
+                            birth = editBirth.text.toString(),
+                            phone = editPhone.text.toString(),
+                            photo = ""
+                        )
+                        viewModel.addUser(user)
+                        dialog.dismiss()
+                    }
+                }
+                dialog.show()
+            }
 
         val itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback(adapter))
         itemTouchHelper.attachToRecyclerView(binding.recyclerUsers)
