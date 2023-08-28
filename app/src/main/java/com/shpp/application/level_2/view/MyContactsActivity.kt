@@ -1,8 +1,6 @@
 package com.shpp.application.level_2.view
 
 import android.app.Activity
-import android.app.AlertDialog
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
@@ -18,10 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shpp.application.R
-import com.shpp.application.databinding.AddUserDialogBinding
 import com.shpp.application.databinding.MyContactsActivityBinding
 import com.shpp.application.level_2.App
-import com.shpp.application.level_2.model.User
 import com.shpp.application.level_2.utils.Constants.ZERO_POSITION
 import com.shpp.application.level_2.view.callBacks.SwipeToDeleteCallback
 import com.shpp.application.level_2.viewModel.MyContactsViewModel
@@ -37,9 +33,11 @@ class MyContactsActivity: AppCompatActivity() {
 
     private lateinit var viewModel: MyContactsViewModel
 
-    private var urlAvatar: String = ""
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
-    lateinit var bindingAdd: AddUserDialogBinding
+    private val alertDialog: ContactDialog by lazy {
+        ContactDialog(viewModel, binding, layoutInflater)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +53,7 @@ class MyContactsActivity: AppCompatActivity() {
                         // Використовуйте Glide або іншу бібліотеку для завантаження зображення в ImageView
                         Glide.with(this)
                             .load(selectedImageUri)
-                            .into(bindingAdd.avatar)
+                            .into(avatar)
 
                         // Тут ви також можете зберегти адресу зображення для подальшого використання
                         val imageUrl = selectedImageUri.toString()
@@ -66,6 +64,7 @@ class MyContactsActivity: AppCompatActivity() {
                 }
             }
         }
+
 
         val viewModelFactory = MyContactsViewModelFactory(App())
         viewModel = ViewModelProvider(this, viewModelFactory)
@@ -83,64 +82,18 @@ class MyContactsActivity: AppCompatActivity() {
         }
 
         binding.buttonAddContacts.setOnClickListener {
-//                val alertDialog = ContactDialog(viewModel, binding, layoutInflater, this)
-//                alertDialog.show(this)
-            show(this)
+//            alertDialog = ContactDialog(viewModel, binding, layoutInflater)
+            alertDialog.show(this)
+        }
+
+
+        alertDialog.bindingAdd.buttonAddPhoto.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            resultLauncher.launch(intent)
         }
 
         val itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback(adapter))
         itemTouchHelper.attachToRecyclerView(binding.recyclerUsers)
-    }
-
-    fun show(context: Context) {
-        val dialogLayout = layoutInflater.inflate(R.layout.add_user_dialog, binding.root, false)
-        val dialogBuilder = AlertDialog.Builder(context)
-        dialogBuilder.setView(dialogLayout)
-
-        val dialog = dialogBuilder.create()
-
-        bindingAdd = AddUserDialogBinding.bind(dialogLayout)
-
-        bindingAdd.buttonSave.setOnClickListener {
-            with(bindingAdd) {
-                val user = User(
-                    name = editUsername.text.toString(),
-                    job = editCareer.text.toString(),
-                    address = editAddress.text.toString(),
-                    email = editEmail.text.toString(),
-                    birth = editBirth.text.toString(),
-                    phone = editPhone.text.toString(),
-                    photo = urlAvatar
-                )
-                viewModel.addUser(user)
-                dialog.dismiss()
-            }
-        }
-
-//        var resultLauncher = MyContactsActivity.registerForActivityResult(StartActivityForResult()) { result ->
-//            if (result.resultCode == Activity.RESULT_OK) {
-//                // There are no request codes
-//                val data: Intent? = result.data
-//                if (data != null) {
-//                    Glide.with(this)
-//                        .load(data)
-//                        .into(bindingAdd.avatar)
-//                    urlAvatar = data.toString()
-//                } else {
-//                    Log.d("PhotoPicker", "No media selected")
-//                }
-//            }
-//        }
-
-
-
-
-        bindingAdd.buttonAddPhoto.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-//            context.startActivity(intent)
-            resultLauncher.launch(intent)
-        }
-        dialog.show()
     }
 
     private fun addVisibleButtonScrollListener() {

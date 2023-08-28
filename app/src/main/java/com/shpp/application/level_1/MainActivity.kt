@@ -18,41 +18,12 @@ class MainActivity: AppCompatActivity()  {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    private lateinit var resultLauncher: ActivityResultLauncher<Intent>
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(binding.root)
         binding.buttonLogOut.setOnClickListener { startAuthActivity(); }
         changeTextNameView()
-
-
-        resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val data: Intent? = result.data
-                if (data != null) {
-                    val selectedImageUri = data.data
-                    // Тут ви можете робити обробку обраного зображення
-                    if (selectedImageUri != null) {
-                        // Використовуйте Glide або іншу бібліотеку для завантаження зображення в ImageView
-                        Glide.with(this)
-                            .load(selectedImageUri)
-                            .into(binding.avatar)
-
-                        // Тут ви також можете зберегти адресу зображення для подальшого використання
-                        val imageUrl = selectedImageUri.toString()
-                    } else {
-                        Log.d("PhotoPicker", "No media selected")
-                    }
-                }
-            }
-        }
-
-        binding.avatar.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            resultLauncher.launch(intent)
-        }
 
     }
 
