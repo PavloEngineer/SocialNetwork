@@ -12,29 +12,12 @@ import com.google.android.material.snackbar.Snackbar
 import com.shpp.application.R
 import com.shpp.application.databinding.ItemUserBinding
 import com.shpp.application.databinding.MyContactsActivityBinding
-import com.shpp.application.level_2.App
 import com.shpp.application.level_2.model.User
+import com.shpp.application.level_2.utils.Constants.COUNT_INTERVAL
+import com.shpp.application.level_2.utils.Constants.MILLIS_IN_FUTURE
+import com.shpp.application.level_2.view.callBacks.UserDiffCallBack
 import com.shpp.application.level_2.viewModel.MyContactsViewModel
 import com.squareup.picasso.Picasso
-
-
-class UserDiffCallBack(
-    private val oldList: List<User>,
-    private val newList: List<User>
-) : DiffUtil.Callback() {
-    override fun getOldListSize(): Int = oldList.size
-
-    override fun getNewListSize(): Int = newList.size
-
-    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].id == newList[newItemPosition].id
-    }
-
-    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition] == newList[newItemPosition]
-    }
-
-}
 
 class UsersAdapter(
     val myContactsViewModel: MyContactsViewModel,
@@ -130,14 +113,13 @@ class UsersAdapter(
             myContactsViewModel.addUser(user, index)
         }
 
-        val timer = object : CountDownTimer(5000, 1000) { // 5000 мс = 5 секунд
+        val timer = object : CountDownTimer(MILLIS_IN_FUTURE, COUNT_INTERVAL) {
             override fun onTick(millisUntilFinished: Long) {
-                // Вивід таймеру
-                snackBar.setText(massageSnackBar + " ${millisUntilFinished / 1000}")
+                snackBar.setText(massageSnackBar + " ${millisUntilFinished / COUNT_INTERVAL}")
             }
 
             override fun onFinish() {
-                snackBar.dismiss() // Закриття SnackBar після завершення таймера
+                snackBar.dismiss()
             }
         }
         timer.start()

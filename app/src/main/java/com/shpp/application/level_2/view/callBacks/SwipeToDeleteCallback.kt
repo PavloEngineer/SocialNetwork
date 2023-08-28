@@ -1,10 +1,11 @@
-package com.shpp.application.level_2.view
+package com.shpp.application.level_2.view.callBacks
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.shpp.application.level_2.view.UsersAdapter
 
 class SwipeToDeleteCallback(private val adapter: UsersAdapter) : ItemTouchHelper.SimpleCallback(
-    0, // Для перетягування не потрібно
+    0,
     ItemTouchHelper.LEFT
 ) {
     override fun onMove(

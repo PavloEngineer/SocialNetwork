@@ -1,5 +1,6 @@
 package com.shpp.application.level_2.model
 import com.github.javafaker.Faker
+import com.shpp.application.level_2.utils.Constants.NUMBER_USERS
 
 typealias UserListeners = (users: List<User>) -> Unit
 class UserService {
@@ -11,7 +12,7 @@ class UserService {
     init {
         val faker: Faker = Faker.instance()
         IMAGES.shuffle()
-        users = (1..15).map { User (
+        users = (1..NUMBER_USERS).map { User (
             id = it.toInt(),
             name = faker.name().name(),
             job = faker.job().position(),
