@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import com.bumptech.glide.Glide
 import com.shpp.application.R
 import com.shpp.application.databinding.AddUserDialogBinding
@@ -18,18 +19,23 @@ class ContactDialog(
     val contactsViewModel: MyContactsViewModel,
     val myContactBinding: MyContactsActivityBinding,
     val layoutInflaterContact: LayoutInflater,
+    val context: Context
 ) {
 
     var urlAvatar: String = ""
+    val dialogLayout: View by lazy {
+        layoutInflaterContact.inflate(R.layout.add_user_dialog, myContactBinding.root, false)
+    }
 
-    fun show(context: Context) {
-        val dialogLayout = layoutInflaterContact.inflate(R.layout.add_user_dialog, myContactBinding.root, false)
+    val bindingAdd: AddUserDialogBinding by lazy {
+        AddUserDialogBinding.bind(dialogLayout)
+    }
+
+    fun show() {
         val dialogBuilder = AlertDialog.Builder(context)
         dialogBuilder.setView(dialogLayout)
 
         val dialog = dialogBuilder.create()
-
-       val bindingAdd = AddUserDialogBinding.bind(dialogLayout)
 
         bindingAdd.buttonSave.setOnClickListener {
             with(bindingAdd) {
@@ -46,9 +52,28 @@ class ContactDialog(
                 dialog.dismiss()
             }
         }
+        dialog.show()
     }
 
-    fun uploadImage(activity: Activity, result: androidx.activity.result.ActivityResult) {
+    fun downloadImage(result: androidx.activity.result.ActivityResult) {
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data: Intent? = result.data
+            if (data != null) {
+                val selectedImageUri = data.data
+                // Тут ви можете робити обробку обраного зображення
+                if (selectedImageUri != null) {
+                    // Використовуйте Glide або іншу бібліотеку для завантаження зображення в ImageView
+                    Glide.with(context)
+                        .load(selectedImageUri)
+                        .into(bindingAdd.avatar)
 
+                    // Тут ви також можете зберегти адресу зображення для подальшого використання
+                    val imageUrl = selectedImageUri.toString()
+                    urlAvatar = imageUrl
+                } else {
+                    Log.d("PhotoPicker", "No media selected")
+                }
+            }
+        }
     }
 }
