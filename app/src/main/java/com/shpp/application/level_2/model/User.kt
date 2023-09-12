@@ -1,5 +1,9 @@
 package com.shpp.application.level_2.model
 
+/**
+ * User.kt
+ * @author Pavlo Kokhanevych
+ */
 data class User(
     var id: Int = -1,
     var name: String,

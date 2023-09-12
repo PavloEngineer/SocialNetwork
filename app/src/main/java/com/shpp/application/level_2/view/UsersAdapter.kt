@@ -30,7 +30,9 @@ class UsersAdapter(
         val binding: ItemUserBinding
     ) : RecyclerView.ViewHolder(binding.root)
 
-
+    /**
+     * Using DiffUtil for optimization process with ViewHolders.
+     */
     var users: List<User> = emptyList()
         set(value) {
             val diffUtil = UserDiffCallBack(field, value)
@@ -102,7 +104,6 @@ class UsersAdapter(
         }
     }
 
-
     fun undoDelete(user: User, index: Int) {
         val snackBar = Snackbar.make(
             contactsBinding.myContactsView,
@@ -113,6 +114,7 @@ class UsersAdapter(
             myContactsViewModel.addUser(user, index)
         }
 
+        // CountDownTimer puts timer for some period of time.
         val timer = object : CountDownTimer(MILLIS_IN_FUTURE, COUNT_INTERVAL) {
             override fun onTick(millisUntilFinished: Long) {
                 snackBar.setText(massageSnackBar + " ${millisUntilFinished / COUNT_INTERVAL}")
@@ -122,6 +124,7 @@ class UsersAdapter(
                 snackBar.dismiss()
             }
         }
+
         timer.start()
         snackBar.show()
     }

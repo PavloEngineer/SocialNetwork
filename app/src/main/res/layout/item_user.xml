@@ -36,8 +36,7 @@
         android:layout_marginStart="@dimen/normal_margin"
         app:layout_constraintStart_toEndOf="@id/avatarUser"
         app:layout_constraintTop_toTopOf="@id/avatarUser"
-        app:layout_constraintEnd_toStartOf="@id/basket"
-        />
+        app:layout_constraintEnd_toStartOf="@id/basket" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/job"
@@ -52,9 +51,7 @@
         android:layout_marginStart="@dimen/normal_margin"
         app:layout_constraintStart_toEndOf="@id/avatarUser"
         app:layout_constraintTop_toBottomOf="@id/name"
-        app:layout_constraintEnd_toStartOf="@id/basket"
-        />
-
+        app:layout_constraintEnd_toStartOf="@id/basket" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/basket"
@@ -67,5 +64,4 @@
         app:layout_constraintStart_toEndOf="@id/name"
         app:layout_constraintTop_toTopOf="@id/avatarUser"
         tools:ignore="SpeakableTextPresentCheck" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/myContactsView"
-    >
+    android:id="@+id/myContactsView">
 
     <View
         android:id="@+id/viewBar"
@@ -13,8 +12,7 @@
         android:background="@color/profileBlue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/baselineBack"
@@ -27,8 +25,7 @@
         android:layout_marginTop="@dimen/normal_margin"
         android:layout_marginStart="@dimen/normal_margin"
         app:layout_constraintEnd_toStartOf="@id/textContactsView"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        />
+        app:layout_constraintHorizontal_chainStyle="spread_inside" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textContactsView"
@@ -41,8 +38,7 @@
         android:text="@string/text_contacts"
         android:textColor="@color/profileTitle"
         android:textSize="@dimen/size_title_text"
-        android:fontFamily="@font/opensans_semibold"
-        />
+        android:fontFamily="@font/opensans_semibold" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/baselineSearch"
@@ -53,8 +49,7 @@
         app:layout_constraintTop_toTopOf="@id/baselineBack"
         app:layout_constraintStart_toEndOf="@id/textContactsView"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="@dimen/normal_margin"
-        />
+        android:layout_marginEnd="@dimen/normal_margin" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonAddContacts"
@@ -70,8 +65,7 @@
         android:layout_marginStart="@dimen/normal_margin"
         android:layout_marginTop="@dimen/small_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/baselineBack"
-        />
+        app:layout_constraintTop_toBottomOf="@id/baselineBack" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerUsers"
@@ -80,8 +74,7 @@
         app:layout_constraintTop_toBottomOf="@id/viewBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/buttonScroll"
@@ -92,8 +85,5 @@
         android:layout_marginEnd="@dimen/normal_margin"
         android:layout_marginBottom="@dimen/normal_margin"
         android:src="@drawable/ic_scroll_up"
-        android:backgroundTint="@color/colorAccent"
-        />
-
-
+        android:backgroundTint="@color/colorAccent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

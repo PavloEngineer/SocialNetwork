@@ -2,6 +2,8 @@ package com.shpp.application.level_2.view
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.app.AlertDialog.Builder
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -14,29 +16,37 @@ import com.shpp.application.databinding.MyContactsActivityBinding
 import com.shpp.application.level_2.model.User
 import com.shpp.application.level_2.viewModel.MyContactsViewModel
 
-
+/**
+ * ContactDialog.kt
+ * @author Pavlo Kokhanevych
+ */
 class ContactDialog(
-    val contactsViewModel: MyContactsViewModel,
-    val myContactBinding: MyContactsActivityBinding,
-    val layoutInflaterContact: LayoutInflater,
-    val context: Context
+    private val contactsViewModel: MyContactsViewModel,
+    private val myContactBinding: MyContactsActivityBinding,
+    private val layoutInflaterContact: LayoutInflater,
+    private val context: Context
 ) {
 
-    var urlAvatar: String = ""
-    val dialogLayout: View by lazy {
-        layoutInflaterContact.inflate(R.layout.add_user_dialog, myContactBinding.root, false)
-    }
 
     val bindingAdd: AddUserDialogBinding by lazy {
         AddUserDialogBinding.bind(dialogLayout)
     }
 
-    fun show() {
-        val dialogBuilder = AlertDialog.Builder(context)
+    private var urlAvatar: String = ""
+    private var dialogBuilder: Builder = AlertDialog.Builder(context)
+    private val dialog: Dialog
+
+    private val dialogLayout: View by lazy {
+        layoutInflaterContact.inflate(R.layout.add_user_dialog, myContactBinding.root, false)
+    }
+
+    init {
         dialogBuilder.setView(dialogLayout)
+        dialog = dialogBuilder.create()
+    }
 
-        val dialog = dialogBuilder.create()
-
+    fun show() {
+        clearAllField()
         bindingAdd.buttonSave.setOnClickListener {
             with(bindingAdd) {
                 val user = User(
@@ -52,24 +62,41 @@ class ContactDialog(
                 dialog.dismiss()
             }
         }
+
+        bindingAdd.baselineBack.setOnClickListener{
+            dialog.dismiss()
+        }
+
         dialog.show()
     }
 
+    private fun clearAllField() {
+        with(bindingAdd) {
+             editUsername.text = null
+             editCareer.text = null
+             editAddress.text = null
+             editEmail.text = null
+             editBirth.text = null
+             editPhone.text = null
+             urlAvatar = ""
+        }
+    }
+
     fun downloadImage(result: androidx.activity.result.ActivityResult) {
+
+        // Checks ending operation choosing photo.
         if (result.resultCode == Activity.RESULT_OK) {
             val data: Intent? = result.data
             if (data != null) {
                 val selectedImageUri = data.data
-                // Тут ви можете робити обробку обраного зображення
+
+                // Loads photo and saves URL.
                 if (selectedImageUri != null) {
-                    // Використовуйте Glide або іншу бібліотеку для завантаження зображення в ImageView
                     Glide.with(context)
                         .load(selectedImageUri)
                         .into(bindingAdd.avatar)
 
-                    // Тут ви також можете зберегти адресу зображення для подальшого використання
-                    val imageUrl = selectedImageUri.toString()
-                    urlAvatar = imageUrl
+                    urlAvatar = selectedImageUri.toString()
                 } else {
                     Log.d("PhotoPicker", "No media selected")
                 }

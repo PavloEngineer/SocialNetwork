@@ -51,6 +51,7 @@ class MyContactsActivity : AppCompatActivity() {
         binding.recyclerUsers.layoutManager = layoutManager
         binding.recyclerUsers.adapter = adapter
         addVisibleButtonScrollListener()
+
         resultLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 alertDialog.downloadImage(result)

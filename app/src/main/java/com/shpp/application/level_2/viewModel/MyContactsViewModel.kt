@@ -6,6 +6,10 @@ import com.shpp.application.level_2.model.User
 import com.shpp.application.level_2.model.UserListeners
 import com.shpp.application.level_2.model.UserService
 
+/**
+ * MyContactsViewModel.kt
+ * @author Pavlo Kokhanevych
+ */
 class MyContactsViewModel(
     private val usersService: UserService
 ) : ViewModel() {

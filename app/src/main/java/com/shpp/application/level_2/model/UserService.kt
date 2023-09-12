@@ -1,8 +1,14 @@
 package com.shpp.application.level_2.model
+
 import com.github.javafaker.Faker
 import com.shpp.application.level_2.utils.Constants.NUMBER_USERS
 
 typealias UserListeners = (users: List<User>) -> Unit
+
+/**
+ * UserService.kt
+ * @author Pavlo Kokhanevych
+ */
 class UserService {
 
     private var users: MutableList<User> = mutableListOf<User>()
@@ -70,5 +76,4 @@ class UserService {
             "https://gravatar.com/avatar/ba79001e355f4092cd4b47df9d1070a2?s=400&d=robohash&r=x"
         )
     }
-
 }
