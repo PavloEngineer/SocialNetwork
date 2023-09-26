@@ -1,4 +1,4 @@
-package com.shpp.application.level_2.model
+package com.shpp.application.level_2.data.model
 
 /**
  * User.kt
@@ -12,5 +12,5 @@ data class User(
     var email: String,
     var birth: String = "11.01.2002",
     var phone: String,
-    var photo: String
+    var photo: String?
 )

@@ -1,4 +1,4 @@
-package com.shpp.application.level_2.view
+package com.shpp.application.level_2.presentation.my_contacts.add_contact
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -13,14 +13,14 @@ import com.bumptech.glide.Glide
 import com.shpp.application.R
 import com.shpp.application.databinding.AddUserDialogBinding
 import com.shpp.application.databinding.MyContactsActivityBinding
-import com.shpp.application.level_2.model.User
-import com.shpp.application.level_2.viewModel.MyContactsViewModel
+import com.shpp.application.level_2.data.model.User
+import com.shpp.application.level_2.presentation.my_contacts.MyContactsViewModel
 
 /**
  * ContactDialog.kt
  * @author Pavlo Kokhanevych
  */
-class ContactDialog(
+class ContactDialog(        //todo Dialog fragment
     private val contactsViewModel: MyContactsViewModel,
     private val myContactBinding: MyContactsActivityBinding,
     private val layoutInflaterContact: LayoutInflater,
@@ -49,7 +49,7 @@ class ContactDialog(
         clearAllField()
         bindingAdd.buttonSave.setOnClickListener {
             with(bindingAdd) {
-                val user = User(
+                val user = User(        //todo id ?
                     name = editUsername.text.toString(),
                     job = editCareer.text.toString(),
                     address = editAddress.text.toString(),
@@ -58,6 +58,7 @@ class ContactDialog(
                     phone = editPhone.text.toString(),
                     photo = urlAvatar
                 )
+                Log.d("myLog", user.toString())
                 contactsViewModel.addUser(user)
                 dialog.dismiss()
             }
@@ -92,7 +93,7 @@ class ContactDialog(
 
                 // Loads photo and saves URL.
                 if (selectedImageUri != null) {
-                    Glide.with(context)
+                    Glide.with(context) //todo extension
                         .load(selectedImageUri)
                         .into(bindingAdd.avatar)
 

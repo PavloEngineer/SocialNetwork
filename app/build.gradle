@@ -57,4 +57,7 @@ dependencies {
             because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
         }
     }
+
+    //Fragments
+    implementation 'androidx.fragment:fragment-ktx:1.5.7'
 }
