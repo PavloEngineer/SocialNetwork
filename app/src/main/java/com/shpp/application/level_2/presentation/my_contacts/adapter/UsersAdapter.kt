@@ -15,9 +15,14 @@ class UsersAdapter(
 ) : ListAdapter<User, UsersAdapter.UsersViewHolder>(UserDiffUtilCallBack()) {
 
 
+    init {
+        listener.addSwipeLeftHelper()
+    }
+
     inner class UsersViewHolder(
             private val binding: ItemUserBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+
 
         fun bind(user: User) {
             with(binding) {
@@ -36,11 +41,6 @@ class UsersAdapter(
 
     }
 
-    fun onSwipedContact(position: Int) {
-        listener.onDeleteClick(currentList[position])
-    }
-
-
     override fun onCreateViewHolder(
             parent: ViewGroup,
             viewType: Int
@@ -58,6 +58,4 @@ class UsersAdapter(
             holder: UsersViewHolder,
             position: Int
     ) = holder.bind(currentList[position])
-
-
 }

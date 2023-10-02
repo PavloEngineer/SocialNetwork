@@ -1,55 +1,78 @@
 package com.shpp.application.level_2.presentation.my_contacts.add_contact
 
 import android.app.Activity
-import android.app.AlertDialog
-import android.app.AlertDialog.Builder
-import android.app.Dialog
-import android.content.Context
 import android.content.Intent
+import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import com.bumptech.glide.Glide
-import com.shpp.application.R
+import android.view.ViewGroup
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatDialogFragment
+import androidx.fragment.app.DialogFragment
 import com.shpp.application.databinding.AddUserDialogBinding
-import com.shpp.application.databinding.MyContactsActivityBinding
 import com.shpp.application.level_2.data.model.User
 import com.shpp.application.level_2.presentation.my_contacts.MyContactsViewModel
+import com.shpp.application.level_2.presentation.utils.extensions.downloadAndPutPhoto
 
 /**
  * ContactDialog.kt
  * @author Pavlo Kokhanevych
  */
-class ContactDialog(        //todo Dialog fragment
-    private val contactsViewModel: MyContactsViewModel,
-    private val myContactBinding: MyContactsActivityBinding,
-    private val layoutInflaterContact: LayoutInflater,
-    private val context: Context
-) {
+class ContactDialog : DialogFragment() {
 
-
-    val bindingAdd: AddUserDialogBinding by lazy {
-        AddUserDialogBinding.bind(dialogLayout)
-    }
+    private val contactsViewModel: MyContactsViewModel = MyContactsViewModel()
+    private lateinit var bindingAdd: AddUserDialogBinding
 
     private var urlAvatar: String = ""
-    private var dialogBuilder: Builder = AlertDialog.Builder(context)
-    private val dialog: Dialog
 
-    private val dialogLayout: View by lazy {
-        layoutInflaterContact.inflate(R.layout.add_user_dialog, myContactBinding.root, false)
+    private lateinit var resultLauncher: ActivityResultLauncher<Intent>
+
+    companion object {
+        fun newInstance(): ContactDialog {
+            return ContactDialog()
+        }
     }
 
-    init {
-        dialogBuilder.setView(dialogLayout)
-        dialog = dialogBuilder.create()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        bindingAdd = AddUserDialogBinding.inflate(inflater, container, false)
+        return bindingAdd.root
     }
 
-    fun show() {
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         clearAllField()
+        initializeResultLauncher()
+        addButtonSaveListener()
+        addBaselineListener()
+        addButtonAddPhotoListener()
+    }
+
+    private fun addButtonAddPhotoListener() {
+        bindingAdd.buttonAddPhoto.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            resultLauncher.launch(intent)
+        }
+    }
+
+    private fun addBaselineListener() {
+        bindingAdd.baselineBack.setOnClickListener {
+            dismiss()
+        }
+    }
+
+    private fun addButtonSaveListener() {
         bindingAdd.buttonSave.setOnClickListener {
             with(bindingAdd) {
-                val user = User(        //todo id ?
+                val user = User(
+                    id = (0..100).random(),
                     name = editUsername.text.toString(),
                     job = editCareer.text.toString(),
                     address = editAddress.text.toString(),
@@ -60,30 +83,31 @@ class ContactDialog(        //todo Dialog fragment
                 )
                 Log.d("myLog", user.toString())
                 contactsViewModel.addUser(user)
-                dialog.dismiss()
+                dismiss()
             }
         }
+    }
 
-        bindingAdd.baselineBack.setOnClickListener{
-            dialog.dismiss()
-        }
-
-        dialog.show()
+    private fun initializeResultLauncher() {
+        resultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { resultForActivity ->
+                downloadImage(resultForActivity)
+            }
     }
 
     private fun clearAllField() {
         with(bindingAdd) {
-             editUsername.text = null
-             editCareer.text = null
-             editAddress.text = null
-             editEmail.text = null
-             editBirth.text = null
-             editPhone.text = null
-             urlAvatar = ""
+            editUsername.text = null
+            editCareer.text = null
+            editAddress.text = null
+            editEmail.text = null
+            editBirth.text = null
+            editPhone.text = null
+            urlAvatar = ""
         }
     }
 
-    fun downloadImage(result: androidx.activity.result.ActivityResult) {
+    private fun downloadImage(result: androidx.activity.result.ActivityResult) {
 
         // Checks ending operation choosing photo.
         if (result.resultCode == Activity.RESULT_OK) {
@@ -93,11 +117,8 @@ class ContactDialog(        //todo Dialog fragment
 
                 // Loads photo and saves URL.
                 if (selectedImageUri != null) {
-                    Glide.with(context) //todo extension
-                        .load(selectedImageUri)
-                        .into(bindingAdd.avatar)
-
                     urlAvatar = selectedImageUri.toString()
+                    bindingAdd.avatar.downloadAndPutPhoto(urlAvatar)
                 } else {
                     Log.d("PhotoPicker", "No media selected")
                 }

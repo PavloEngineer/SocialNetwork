@@ -1,10 +1,9 @@
 package com.shpp.application.level_2
 
 import android.app.Application
-import android.content.ContentResolver
 import com.shpp.application.level_2.data.repository.UserRepository
 
-class App : Application() {      //todo arch https://developer.android.com/courses/pathways/android-architecture
+class App : Application() {
 
     override fun onCreate() {
         _userRepository = UserRepository()

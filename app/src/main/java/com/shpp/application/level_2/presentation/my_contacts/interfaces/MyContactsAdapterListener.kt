@@ -8,5 +8,7 @@ interface MyContactsAdapterListener {
 
     fun onDeleteClick(contact: User)
 
+    fun addSwipeLeftHelper()
+
 
 }

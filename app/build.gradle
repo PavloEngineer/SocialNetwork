@@ -42,22 +42,16 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2"
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0")
+
+    // Randomizer
     implementation 'com.github.javafaker:javafaker:1.0.2'
 
     // Downloads photos.
     implementation 'com.github.bumptech.glide:glide:4.15.1'
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
-    // fixes configuration issues
-    constraints {
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
-            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
-        }
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
-            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
-        }
-    }
-
     //Fragments
-    implementation 'androidx.fragment:fragment-ktx:1.5.7'
+    implementation 'androidx.fragment:fragment-ktx:1.6.1'
 }

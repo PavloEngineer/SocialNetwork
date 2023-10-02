@@ -19,6 +19,7 @@
     <dimen name="photo_size_height">110dp</dimen>
     <dimen name="stroke_width">2dp</dimen>
     <dimen name="width_button_register">312dp</dimen>
+    <dimen name="width_dialog_contact">350dp</dimen>
     <dimen name="height_button">50dp</dimen>
     <dimen name="corner_radius">6dp</dimen>
     <dimen name="view_height">140dp</dimen>

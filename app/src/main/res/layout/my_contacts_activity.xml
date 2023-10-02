@@ -85,5 +85,6 @@
         android:layout_marginEnd="@dimen/normal_margin"
         android:layout_marginBottom="@dimen/normal_margin"
         android:src="@drawable/ic_scroll_up"
+        android:visibility="invisible"
         android:backgroundTint="@color/colorAccent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

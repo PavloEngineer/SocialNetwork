@@ -26,7 +26,7 @@ class UserRepository {
     private fun generateFakeContactsList() =
         (0..Constants.NUMBER_USERS).map {
             User(
-                id = it.toInt(),
+                id = (0..100).random(),
                 name = faker
                     .name()
                     .name(),

@@ -1,6 +1,7 @@
 package com.shpp.application.level_2.presentation.my_contacts
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.shpp.application.level_2.App
 import com.shpp.application.level_2.data.model.User
@@ -36,6 +37,4 @@ class MyContactsViewModel : ViewModel() {
             deleteUser(it[position])
         }
     }
-
-
 }
