@@ -1,11 +1,10 @@
-package com.shpp.application.level_2.presentation.my_contacts
+package com.shpp.application.level_3.presentation.my_contacts
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import com.shpp.application.level_2.App
-import com.shpp.application.level_2.data.model.User
-import com.shpp.application.level_2.data.repository.UserRepository
+import com.shpp.application.level_3.App
+import com.shpp.application.level_3.data.model.User
+import com.shpp.application.level_3.data.repository.UserRepository
 
 /**
  * MyContactsViewModel.kt

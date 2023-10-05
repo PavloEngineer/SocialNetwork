@@ -1,16 +1,18 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
     namespace 'com.shpp.application'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.shpp.application"
         minSdk 21
-        targetSdk 33
+        //noinspection EditedTargetSdkVersion
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -38,12 +40,12 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2"
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0")
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0'
 
     // Randomizer
     implementation 'com.github.javafaker:javafaker:1.0.2'
@@ -52,6 +54,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.15.1'
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
-    //Fragments
-    implementation 'androidx.fragment:fragment-ktx:1.6.1'
+    // Fragment navigation
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.4'
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.4")
 }

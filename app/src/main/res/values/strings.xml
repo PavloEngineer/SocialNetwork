@@ -2,7 +2,7 @@
     <!-- app name -->
     <string name="app_name">My Application</string>
 
-    <!-- profile screen -->
+    <!-- profile screens -->
     <string name="title_myProfile">Settings</string>
     <string name="name_myProfile">Lucile Alvarado</string>
     <string name="job_myProfile">Graphic designer</string>
@@ -10,6 +10,9 @@
     <string name="view_contact_button">View my contacts</string>
     <string name="edit_button">Edit profile</string>
     <string name="text_logOut">Log out</string>
+    <string name="text_title_profile">Profile</string>
+    <string name="text_button_message">Message</string>
+
 
     <!-- authentication screen -->
     <string name="label_lets_get">Let\'s get acquainted</string>

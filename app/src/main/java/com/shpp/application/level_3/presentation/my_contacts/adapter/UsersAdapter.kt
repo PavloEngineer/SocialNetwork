@@ -1,14 +1,14 @@
-package com.shpp.application.level_2.presentation.my_contacts.adapter
+package com.shpp.application.level_3.presentation.my_contacts.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.shpp.application.databinding.ItemUserBinding
-import com.shpp.application.level_2.data.model.User
-import com.shpp.application.level_2.presentation.callBacks.diffutil.UserDiffUtilCallBack
-import com.shpp.application.level_2.presentation.my_contacts.interfaces.MyContactsAdapterListener
-import com.shpp.application.level_2.presentation.utils.extensions.downloadAndPutPhoto
+import com.shpp.application.level_3.data.model.User
+import com.shpp.application.level_3.presentation.callBacks.diffutil.UserDiffUtilCallBack
+import com.shpp.application.level_3.presentation.my_contacts.interfaces.MyContactsAdapterListener
+import com.shpp.application.level_3.presentation.utils.extensions.downloadAndPutPhoto
 
 class UsersAdapter(
         val listener: MyContactsAdapterListener

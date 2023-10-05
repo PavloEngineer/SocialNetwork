@@ -1,4 +1,4 @@
-package com.shpp.application.level_2.presentation.my_contacts.add_contact
+package com.shpp.application.level_3.presentation.my_contacts.add_contact
 
 import android.app.Activity
 import android.content.Intent
@@ -10,12 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.DialogFragment
 import com.shpp.application.databinding.AddUserDialogBinding
-import com.shpp.application.level_2.data.model.User
-import com.shpp.application.level_2.presentation.my_contacts.MyContactsViewModel
-import com.shpp.application.level_2.presentation.utils.extensions.downloadAndPutPhoto
+import com.shpp.application.level_3.data.model.User
+import com.shpp.application.level_3.presentation.my_contacts.MyContactsViewModel
+import com.shpp.application.level_3.presentation.utils.extensions.downloadAndPutPhoto
 
 /**
  * ContactDialog.kt

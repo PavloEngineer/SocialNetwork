@@ -1,6 +1,6 @@
-package com.shpp.application.level_2.presentation.my_contacts.interfaces
+package com.shpp.application.level_3.presentation.my_contacts.interfaces
 
-import com.shpp.application.level_2.data.model.User
+import com.shpp.application.level_3.data.model.User
 
 interface MyContactsAdapterListener {
 

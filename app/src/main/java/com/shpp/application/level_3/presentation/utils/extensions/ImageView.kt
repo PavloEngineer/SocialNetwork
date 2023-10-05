@@ -1,4 +1,4 @@
-package com.shpp.application.level_2.presentation.utils.extensions
+package com.shpp.application.level_3.presentation.utils.extensions
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide

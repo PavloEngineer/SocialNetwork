@@ -1,4 +1,4 @@
-package com.shpp.application.level_2.data.model
+package com.shpp.application.level_3.data.model
 
 /**
  * User.kt

@@ -1,10 +1,10 @@
-package com.shpp.application.level_2.data.repository
+package com.shpp.application.level_3.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.github.javafaker.Faker
-import com.shpp.application.level_2.data.model.User
-import com.shpp.application.level_2.utils.Constants
+import com.shpp.application.level_3.data.model.User
+import com.shpp.application.level_3.utils.Constants
 
 /**
  * UserService.kt

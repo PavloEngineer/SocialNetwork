@@ -3,7 +3,7 @@
     <!-- app name -->
     <string name="app_name">Мій додаток</string>
 
-    <!-- profile screen -->
+    <!-- profile screens -->
     <string name="title_myProfile">Налаштування</string>
     <string name="name_myProfile">Люсіль Альварадо</string>
     <string name="job_myProfile">Графічний дизайнер</string>
@@ -11,6 +11,8 @@
     <string name="edit_button">Редагувати профіль</string>
     <string name="view_contact_button">Переглянути мої контакти</string>
     <string name="text_logOut">Вийти</string>
+    <string name="text_title_profile">Профіль</string>
+    <string name="text_button_message">Написати</string>
 
     <!-- authentication screens -->
     <string name="label_lets_get">Давай знайомитись</string>

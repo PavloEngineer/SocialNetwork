@@ -1,7 +1,7 @@
-package com.shpp.application.level_2.presentation.callBacks.diffutil
+package com.shpp.application.level_3.presentation.callBacks.diffutil
 
 import androidx.recyclerview.widget.DiffUtil
-import com.shpp.application.level_2.data.model.User
+import com.shpp.application.level_3.data.model.User
 
 class UserDiffUtilCallBack : DiffUtil.ItemCallback<User>() {
 
