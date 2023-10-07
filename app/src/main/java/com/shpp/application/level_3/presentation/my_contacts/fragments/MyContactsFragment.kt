@@ -1,11 +1,14 @@
 package com.shpp.application.level_3.presentation.my_contacts.fragments
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,13 +26,17 @@ class MyContactsFragment: BaseFragment() {
 
     private lateinit var binding: FragmentMyContactsBinding
 
-
     private val adapter: UsersAdapter by lazy {
         UsersAdapter(
             listener = object : MyContactsAdapterListener {
-                override fun onClick(contact: User) {
-                    val action = MyContactsFragmentDirections.actionMyContactsFragmentToDetailsContactFragment()
-                    Navigation.findNavController(binding.root).navigate(action)
+                override fun onClick(contact: User, extras: FragmentNavigator.Extras) {
+                    val action = MyContactsFragmentDirections.actionMyContactsFragmentToDetailsContactFragment(
+                        contact.name,
+                        contact.job,
+                        contact.address,
+                        contact.photo?: ""
+                    )
+                    Navigation.findNavController(binding.root).navigate(action, extras)
                 }
 
                 override fun onDeleteClick(contact: User) {
@@ -50,6 +57,7 @@ class MyContactsFragment: BaseFragment() {
             }
         )
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

@@ -2,6 +2,9 @@ package com.shpp.application.level_3.presentation.my_contacts.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.shpp.application.databinding.ItemUserBinding
@@ -32,8 +35,13 @@ class UsersAdapter(
                 basket.setOnClickListener {
                     listener.onDeleteClick(user)
                 }
+
                 root.setOnClickListener {
-                    listener.onClick(user)
+                    val extras = FragmentNavigatorExtras(
+                        binding.avatarUser to "transitionPhoto"
+                    )
+                    binding.avatarUser.transitionName = "transaction_${user.id}"
+                    listener.onClick(user, extras)
                 }
                 avatarUser.downloadAndPutPhoto(user.photo)
             }

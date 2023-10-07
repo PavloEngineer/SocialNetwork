@@ -48,4 +48,8 @@
     <string name="hint_username" translatable="false">Pavlo Kokhanevych</string>
     <string name="hint_career" translatable="false">Android Developer</string>
 
+    <!-- Transaction -->
+    <string name="transaction_photo_item" translatable="false">photoItem</string>
+    <string name="transaction_photo_profile" translatable="false">photoProfile</string>
+
 </resources>

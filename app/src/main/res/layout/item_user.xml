@@ -16,6 +16,7 @@
         android:id="@+id/avatarUser"
         android:layout_width="@dimen/size_user_avatar"
         android:layout_height="@dimen/size_user_avatar"
+        android:transitionName="@{`transitionPhoto_${user.id}`}"
         app:srcCompat="@drawable/ic_user_avatar" />
 
     <LinearLayout

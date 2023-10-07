@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,18 +8,36 @@
         android:id="@+id/myContactsFragment"
         android:name="com.shpp.application.level_3.presentation.my_contacts.fragments.MyContactsFragment"
         android:label="MyContactsFragment" >
+
         <action
             android:id="@+id/action_myContactsFragment_to_detailsContactFragment"
-            app:destination="@id/detailsContactFragment"
-            app:enterAnim="@anim/slide_in_right" />
+            app:destination="@id/detailsContactFragment"></action>
+
     </fragment>
+
     <fragment
         android:id="@+id/detailsContactFragment"
         android:name="com.shpp.application.level_3.presentation.my_contacts.fragments.DetailsContactFragment"
         android:label="DetailsContactFragment" >
+
         <action
             android:id="@+id/action_detailsContactFragment_to_myContactsFragment"
             app:destination="@id/myContactsFragment"
-            app:enterAnim="@anim/slide_in_left" />
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_in_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_in_left" />
+        <argument
+            android:name="name"
+            app:argType="string"/>
+        <argument
+            android:name="career"
+            app:argType="string"/>
+        <argument
+            android:name="address"
+            app:argType="string"/>
+        <argument
+            android:name="photoAddress"
+            app:argType="string"/>
     </fragment>
 </navigation>
