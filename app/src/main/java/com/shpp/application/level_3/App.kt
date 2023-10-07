@@ -13,7 +13,7 @@ class App : Application() {
 
     companion object {
         private lateinit var _userRepository: UserRepository
-        val isFeatureNavigationEnable: Boolean = false
+        const val isFeatureNavigationEnable: Boolean = true
 
         val userRepository: UserRepository
             get() = _userRepository

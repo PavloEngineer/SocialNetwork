@@ -17,12 +17,12 @@ class MyContactsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-//        if(!App.isFeatureNavigationEnable && savedInstanceState == null) {
-//            supportFragmentManager
-//                .beginTransaction()
-//                .add(R.id.frame_container, MyContactsFragment(), "activityToContactsFragment")
-//                .addToBackStack("activityToContactsFragment")
-//                .commit()
-//        }
+        if(!App.isFeatureNavigationEnable && savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.frame_container, MyContactsFragment(), "activityToContactsFragment")
+                .addToBackStack("activityToContactsFragment")
+                .commit()
+        }
     }
 }

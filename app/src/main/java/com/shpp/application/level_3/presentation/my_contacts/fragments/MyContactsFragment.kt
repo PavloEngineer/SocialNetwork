@@ -1,19 +1,19 @@
 package com.shpp.application.level_3.presentation.my_contacts.fragments
 
 import android.os.Bundle
-import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.FragmentNavigator
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shpp.application.R
 import com.shpp.application.databinding.FragmentMyContactsBinding
+import com.shpp.application.level_3.App
+import com.shpp.application.level_3.data.enum.UserInfo
 import com.shpp.application.level_3.data.model.User
 import com.shpp.application.level_3.presentation.callBacks.SwipeToDeleteCallback
 import com.shpp.application.level_3.presentation.my_contacts.BaseFragment
@@ -22,7 +22,7 @@ import com.shpp.application.level_3.presentation.my_contacts.add_contact.Contact
 import com.shpp.application.level_3.presentation.my_contacts.interfaces.MyContactsAdapterListener
 import com.shpp.application.level_3.utils.Constants
 
-class MyContactsFragment: BaseFragment() {
+class MyContactsFragment : BaseFragment() {
 
     private lateinit var binding: FragmentMyContactsBinding
 
@@ -30,25 +30,21 @@ class MyContactsFragment: BaseFragment() {
         UsersAdapter(
             listener = object : MyContactsAdapterListener {
                 override fun onClick(contact: User, extras: FragmentNavigator.Extras) {
-                    val action = MyContactsFragmentDirections.actionMyContactsFragmentToDetailsContactFragment(
-                        contact.name,
-                        contact.job,
-                        contact.address,
-                        contact.photo?: ""
-                    )
-                    Navigation.findNavController(binding.root).navigate(action, extras)
+                    startDetailFragment(contact, extras)
                 }
 
                 override fun onDeleteClick(contact: User) {
                     viewModel.deleteUser(contact)
-                    showSnackBar("Remove!", R.string.snackbar_undo
+                    showSnackBar(
+                        "Remove!", R.string.snackbar_undo
                     ) { viewModel.restoreLastDeletedUser() }
                 }
 
                 override fun addSwipeLeftHelper() {
                     val itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback { position ->
                         viewModel.deleteUserByPosition(position)
-                        showSnackBar("Remove!", R.string.snackbar_undo
+                        showSnackBar(
+                            "Remove!", R.string.snackbar_undo
                         ) { viewModel.restoreLastDeletedUser() }
                     })
                     itemTouchHelper.attachToRecyclerView(binding.recyclerUsers)
@@ -63,7 +59,7 @@ class MyContactsFragment: BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
 
-         binding = FragmentMyContactsBinding.inflate(inflater, container, false)
+        binding = FragmentMyContactsBinding.inflate(inflater, container, false)
         setupRecyclerView()
         addVisibleButtonScrollListener()
         addScrollClickedListener()
@@ -120,5 +116,35 @@ class MyContactsFragment: BaseFragment() {
                 }
             }
         })
+    }
+
+    private fun startDetailFragment(contact: User, extras: FragmentNavigator.Extras) {
+        if (App.isFeatureNavigationEnable) {
+            val action =
+                MyContactsFragmentDirections.actionMyContactsFragmentToDetailsContactFragment(
+                    contact.name,
+                    contact.job,
+                    contact.address,
+                    contact.photo ?: ""
+                )
+            Navigation.findNavController(binding.root).navigate(action, extras)
+        } else {
+            val detailsFragment = DetailsContactFragment()
+            setArgumentsForDetails(detailsFragment, contact)
+            parentFragmentManager
+                .beginTransaction()
+                .replace(R.id.frame_container, detailsFragment)
+                .addToBackStack("ToDetailsFragment")
+                .commit()
+        }
+    }
+
+    private fun setArgumentsForDetails(detailsFragment: DetailsContactFragment, contact: User) {
+        val args: Bundle = Bundle()
+        args.putString(UserInfo.NAME.key, contact.name)
+        args.putString(UserInfo.CAREER.key, contact.job)
+        args.putString(UserInfo.ADDRESS.key, contact.address)
+        args.putString(UserInfo.PHOTO_ADDRESS.key, contact.photo)
+        detailsFragment.arguments = args
     }
 }

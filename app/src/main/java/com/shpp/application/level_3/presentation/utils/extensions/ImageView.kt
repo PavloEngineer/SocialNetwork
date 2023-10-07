@@ -19,7 +19,6 @@ fun ImageView.downloadAndPutPhoto(
             .error(R.drawable.ic_user_avatar)
             .into(this)
     } else {
-
         Picasso
             .with(this.context)
             .load(link)
