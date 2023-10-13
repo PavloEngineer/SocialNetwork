@@ -19,7 +19,7 @@ class SwipeToDeleteCallback(
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         val position = viewHolder.adapterPosition
-        when(direction) {
+        when(direction) { // TODO: when?
             ItemTouchHelper.LEFT -> {
                 onSwiped(position)
             }

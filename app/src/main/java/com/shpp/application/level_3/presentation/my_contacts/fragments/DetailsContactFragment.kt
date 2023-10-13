@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.shpp.application.R
 import com.shpp.application.databinding.FragmentContactDetailsBinding
@@ -16,7 +17,9 @@ import com.shpp.application.level_3.presentation.utils.extensions.downloadAndPut
 
 class DetailsContactFragment : BaseFragment() {
 
-    private lateinit var binding: FragmentContactDetailsBinding
+    private val binding: FragmentContactDetailsBinding by lazy {
+        FragmentContactDetailsBinding.inflate(layoutInflater)
+    }
 
     private val navigationArgs: DetailsContactFragmentArgs by navArgs()
 
@@ -24,7 +27,7 @@ class DetailsContactFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition =
-            TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
+            TransitionInflater.from(requireContext()).inflateTransition(R.transition.custom_move)
     }
 
     override fun onCreateView(
@@ -32,7 +35,6 @@ class DetailsContactFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentContactDetailsBinding.inflate(inflater, container, false)
         fillUserProfile()
         addBacklineListener()
         return binding.root
@@ -64,12 +66,14 @@ class DetailsContactFragment : BaseFragment() {
 
     private fun startContactsFragment() {
         if (App.isFeatureNavigationEnable) {
-            Navigation.findNavController(binding.root)
-                .navigate(R.id.action_detailsContactFragment_to_myContactsFragment)
+            val direction = DetailsContactFragmentDirections.actionDetailsContactFragmentToMyContactsFragment()
+            findNavController().navigate(direction)
+//            Navigation.findNavController(binding.root)
+//                .navigate(R.id.action_detailsContactFragment_to_myContactsFragment)
         } else {
             parentFragmentManager
                 .beginTransaction()
-                .replace(R.id.frame_container, MyContactsFragment(), "activityToContactsFragment")
+                .replace(R.id.frame_container, MyContactsFragment(), "activityToContactsFragment") // TODO: to constants
                 .commit()
         }
     }

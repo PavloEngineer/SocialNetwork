@@ -12,10 +12,9 @@ import com.shpp.application.level_3.utils.Constants
  */
 class UserRepository {
 
-    private var _users: MutableLiveData<List<User>> = MutableLiveData()
+    private var _users: MutableLiveData<List<User>> = MutableLiveData() // TODO: mutable variable - var
     var users: LiveData<List<User>> = _users
 
-    private val faker: Faker = Faker.instance()
 
     private var lastDeletedUser: Pair<User, Int>? = null
 
@@ -23,10 +22,10 @@ class UserRepository {
         _users.postValue(generateFakeContactsList())
     }
 
-    private fun generateFakeContactsList() =
-        (0..Constants.NUMBER_USERS).map {
+    private fun generateFakeContactsList(): List<User> {
+        val faker: Faker = Faker.instance()
+        return (0..Constants.NUMBER_USERS).map {
             User(
-                id = (0..100).random(),
                 name = faker
                     .name()
                     .name(),
@@ -49,6 +48,8 @@ class UserRepository {
                     .phoneNumber()
             )
         }
+    }
+
 
     fun restoreLastDeletedUser() {
         lastDeletedUser?.let {user ->
@@ -84,7 +85,7 @@ class UserRepository {
 
 
     companion object {
-        private val IMAGES = mutableListOf(
+        private val IMAGES = mutableListOf( // TODO: mutable?
             "https://gravatar.com/avatar/ca09089ce4e4f4a5c1c408ab22d22a91?s=400&d=robohash&r=x",
             "https://gravatar.com/avatar/efd6858a5f746140ea07cec5733c7c74?s=400&d=robohash&r=x",
             "https://gravatar.com/avatar/8d615a2a1b27c4c3297fa5124305cbfc?s=400&d=robohash&r=x",

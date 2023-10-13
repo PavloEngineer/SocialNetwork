@@ -7,18 +7,19 @@
     <fragment
         android:id="@+id/myContactsFragment"
         android:name="com.shpp.application.level_3.presentation.my_contacts.fragments.MyContactsFragment"
-        android:label="MyContactsFragment" >
+        android:label="MyContactsFragment">
 
         <action
             android:id="@+id/action_myContactsFragment_to_detailsContactFragment"
-            app:destination="@id/detailsContactFragment"></action>
+            app:destination="@id/detailsContactFragment">
+        </action>
 
     </fragment>
 
     <fragment
         android:id="@+id/detailsContactFragment"
         android:name="com.shpp.application.level_3.presentation.my_contacts.fragments.DetailsContactFragment"
-        android:label="DetailsContactFragment" >
+        android:label="DetailsContactFragment">
 
         <action
             android:id="@+id/action_detailsContactFragment_to_myContactsFragment"
@@ -29,15 +30,15 @@
             app:popExitAnim="@anim/slide_in_left" />
         <argument
             android:name="name"
-            app:argType="string"/>
+            app:argType="string" />
         <argument
             android:name="career"
-            app:argType="string"/>
+            app:argType="string" />
         <argument
             android:name="address"
-            app:argType="string"/>
+            app:argType="string" />
         <argument
             android:name="photoAddress"
-            app:argType="string"/>
+            app:argType="string" />
     </fragment>
 </navigation>
