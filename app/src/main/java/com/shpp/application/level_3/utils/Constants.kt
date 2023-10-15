@@ -8,7 +8,7 @@ object Constants {
     /**
      * Period of time for undo delete.
      */
-    const val MILLIS_IN_FUTURE: Int = 5000
+    const val MILLIS_DURATION: Int = 5000
 
     /**
      * Speed time.

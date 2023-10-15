@@ -3,7 +3,7 @@ package com.shpp.application.level_3.presentation.my_contacts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
-import com.shpp.application.level_3.utils.Constants.MILLIS_IN_FUTURE
+import com.shpp.application.level_3.utils.Constants.MILLIS_DURATION
 
 typealias FunctionForSnack = () -> Unit
 
@@ -16,7 +16,7 @@ open class BaseFragment: Fragment() {
               Snackbar.make(
                   it,
                   label,
-                  MILLIS_IN_FUTURE
+                  MILLIS_DURATION
               )
           }
           snackBar?.setAction(actionById) {
