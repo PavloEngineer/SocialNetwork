@@ -11,7 +11,7 @@ open class BaseFragment: Fragment() {
 
      val viewModel: MyContactsViewModel by viewModels()
 
-     open fun showSnackBar(label: String, actionById: Int, functionForAction: FunctionForSnack) {
+    open fun showSnackBar(label: String, actionById: Int, functionForAction: FunctionForSnack) { // TODO: why open?
           val snackBar = view?.let {
               Snackbar.make(
                   it,

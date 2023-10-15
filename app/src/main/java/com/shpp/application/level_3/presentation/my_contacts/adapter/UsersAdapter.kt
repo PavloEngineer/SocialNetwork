@@ -14,33 +14,33 @@ import com.shpp.application.level_3.presentation.my_contacts.interfaces.MyContac
 import com.shpp.application.level_3.presentation.utils.extensions.downloadAndPutPhoto
 
 class UsersAdapter(
-        val listener: MyContactsAdapterListener
+    val listener: MyContactsAdapterListener
 ) : ListAdapter<User, UsersAdapter.UsersViewHolder>(UserDiffUtilCallBack()) {
 
 
     init {
-        listener.addSwipeLeftHelper()
+         listener.addSwipeLeftHelper()
     }
 
     inner class UsersViewHolder(
-            private val binding: ItemUserBinding
+        private val binding: ItemUserBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
 
-        fun bind(user: User) {
+        fun bind(user: User) { // TODO: decompose
             with(binding) {
                 name.text = user.name
                 job.text = user.job
-                basket.tag = user
+                basket.tag = user // TODO: what it
                 basket.setOnClickListener {
                     listener.onDeleteClick(user)
                 }
 
                 root.setOnClickListener {
                     val extras = FragmentNavigatorExtras(
-                        binding.avatarUser to "transitionPhoto"
+                        binding.avatarUser to "transitionPhoto" // TODO: to constants
                     )
-                    binding.avatarUser.transitionName = "transaction_${user.id}"
+                    binding.avatarUser.transitionName = "transaction_${user.id}" // TODO: to constants
                     listener.onClick(user, extras)
                 }
                 avatarUser.downloadAndPutPhoto(user.photo)
@@ -50,20 +50,20 @@ class UsersAdapter(
     }
 
     override fun onCreateViewHolder(
-            parent: ViewGroup,
-            viewType: Int
+        parent: ViewGroup,
+        viewType: Int
     ): UsersViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemUserBinding.inflate(
-                inflater,
-                parent,
-                false
+            inflater,
+            parent,
+            false
         )
         return UsersViewHolder(binding)
     }
 
     override fun onBindViewHolder(
-            holder: UsersViewHolder,
-            position: Int
+        holder: UsersViewHolder,
+        position: Int
     ) = holder.bind(currentList[position])
 }
