@@ -6,13 +6,13 @@ import java.util.UUID
  * User.kt
  * @author Pavlo Kokhanevych
  */
-data class User( // TODO: var?
-    var name: String,
-    var job: String,
-    var address: String,
-    var email: String,
-    var birth: String = "11.01.2002",
-    var phone: String,
-    var photo: String?,
-    var id: UUID = UUID.randomUUID(),
+data class User(
+    val name: String,
+    val job: String,
+    val address: String,
+    val email: String,
+    val birth: String = "11.01.2002",
+    val phone: String,
+    val photo: String?,
+    val id: UUID = UUID.randomUUID(),
 )

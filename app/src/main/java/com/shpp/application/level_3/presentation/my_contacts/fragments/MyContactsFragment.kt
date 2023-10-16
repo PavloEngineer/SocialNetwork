@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.FragmentNavigator
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shpp.application.R
+import com.shpp.application.databinding.AddUserDialogBinding.inflate
 import com.shpp.application.databinding.FragmentMyContactsBinding
 import com.shpp.application.level_3.App
 import com.shpp.application.level_3.data.enum.UserInfo
@@ -18,14 +20,17 @@ import com.shpp.application.level_3.data.model.User
 import com.shpp.application.level_3.presentation.callBacks.SwipeToDeleteCallback
 import com.shpp.application.level_3.presentation.my_contacts.BaseFragment
 import com.shpp.application.level_3.presentation.my_contacts.FunctionForSnack
+import com.shpp.application.level_3.presentation.my_contacts.MyContactsViewModel
 import com.shpp.application.level_3.presentation.my_contacts.adapter.UsersAdapter
 import com.shpp.application.level_3.presentation.my_contacts.add_contact.ContactDialog
 import com.shpp.application.level_3.presentation.my_contacts.interfaces.MyContactsAdapterListener
 import com.shpp.application.level_3.utils.Constants
+import com.shpp.application.level_3.utils.Constants.ADD_USER_TAG
+import com.shpp.application.level_3.utils.Constants.TRANSACTION_TO_DETAILS
 
-class MyContactsFragment : BaseFragment() {
+class MyContactsFragment : BaseFragment<FragmentMyContactsBinding>(FragmentMyContactsBinding::inflate) {
 
-    private lateinit var binding: FragmentMyContactsBinding // TODO: by lazy
+    private val viewModel: MyContactsViewModel by viewModels()
 
     private val adapter: UsersAdapter by lazy {
         UsersAdapter(
@@ -40,34 +45,19 @@ class MyContactsFragment : BaseFragment() {
                         "Remove!", R.string.snackbar_undo
                     ) { viewModel.restoreLastDeletedUser() }
                 }
-
-                override fun addSwipeLeftHelper() { // TODO: delete
-//                    val itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback { position ->
-//                        viewModel.deleteUserByPosition(position)
-//                        showSnackBar(
-//                            "Remove!", R.string.snackbar_undo
-//                        ) { viewModel.restoreLastDeletedUser() }
-//                    })
-//                    itemTouchHelper.attachToRecyclerView(binding.recyclerUsers)
-                }
-
             }
         )
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
-        binding = FragmentMyContactsBinding.inflate(inflater, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+    }
+
+    override fun setListeners() {
         addVisibleButtonScrollListener()
         addScrollClickedListener()
         addListenerAddContact()
-
-        // Inflate the layout for this fragment
-        return binding.root
     }
 
     override fun onStart() {
@@ -82,21 +72,24 @@ class MyContactsFragment : BaseFragment() {
             val layoutManager = LinearLayoutManager(requireContext())
             this.layoutManager = layoutManager
             this.adapter = this@MyContactsFragment.adapter
-
-            val itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback { position ->
-                viewModel.deleteUserByPosition(position)
-                showSnackBar(
-                    "Remove!", R.string.snackbar_undo
-                ) { viewModel.restoreLastDeletedUser() }
-            })
-            itemTouchHelper.attachToRecyclerView(this)
+            addSnackBarBySwipe()
         }
+    }
+
+    private fun addSnackBarBySwipe() {
+        val itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback { position ->
+            viewModel.deleteUserByPosition(position)
+            showSnackBar(
+                "Remove!", R.string.snackbar_undo
+            ) { viewModel.restoreLastDeletedUser() }
+        })
+        itemTouchHelper.attachToRecyclerView(binding.recyclerUsers)
     }
 
     private fun addListenerAddContact() {
         binding.buttonAddContacts.setOnClickListener {
-            val dialogAddUser = ContactDialog.newInstance()
-            dialogAddUser.show(parentFragmentManager, "DialogFragment") // TODO: to constants
+            val dialogAddUser = ContactDialog()
+            dialogAddUser.show(parentFragmentManager, ADD_USER_TAG)
         }
     }
 
@@ -106,27 +99,29 @@ class MyContactsFragment : BaseFragment() {
         }
     }
 
-    private fun addVisibleButtonScrollListener() {// TODO: with
-        binding.recyclerUsers.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
+    private fun addVisibleButtonScrollListener() {
+        with(binding) {
+            recyclerUsers.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
 
-                // if the recycler view is scrolled above hide the button
-                if (dy > 10 && binding.buttonScroll.visibility == View.VISIBLE) {
-                    binding.buttonScroll.visibility = View.INVISIBLE
-                }
+                    // if the recycler view is scrolled above hide the button
+                    if (dy > 10 && buttonScroll.visibility == View.VISIBLE) {
+                        buttonScroll.visibility = View.INVISIBLE
+                    }
 
-                // if the recycler view is scrolled above show the button
-                if (dy < -10 && binding.buttonScroll.visibility == View.INVISIBLE) {
-                    binding.buttonScroll.visibility = View.VISIBLE
-                }
+                    // if the recycler view is scrolled above show the button
+                    if (dy < -10 && buttonScroll.visibility == View.INVISIBLE) {
+                        buttonScroll.visibility = View.VISIBLE
+                    }
 
-                // if the recycler view is at the first item always show the button
-                if (!recyclerView.canScrollVertically(-1)) {
-                    binding.buttonScroll.visibility = View.INVISIBLE
+                    // if the recycler view is at the first item always show the button
+                    if (!recyclerView.canScrollVertically(-1)) {
+                        buttonScroll.visibility = View.INVISIBLE
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 
     private fun startDetailFragment(contact: User, extras: FragmentNavigator.Extras) {
@@ -145,7 +140,7 @@ class MyContactsFragment : BaseFragment() {
             parentFragmentManager
                 .beginTransaction()
                 .replace(R.id.frame_container, detailsFragment)
-                .addToBackStack("ToDetailsFragment") // TODO:
+                .addToBackStack(TRANSACTION_TO_DETAILS)
                 .commit()
         }
     }

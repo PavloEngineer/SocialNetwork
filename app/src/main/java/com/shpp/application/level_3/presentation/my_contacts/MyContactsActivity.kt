@@ -6,6 +6,7 @@ import com.shpp.application.R
 import com.shpp.application.databinding.MyContactsActivityBinding
 import com.shpp.application.level_3.App
 import com.shpp.application.level_3.presentation.my_contacts.fragments.MyContactsFragment
+import com.shpp.application.level_3.utils.Constants.TRANSACTION_TO_CONTACTS
 
 class MyContactsActivity : AppCompatActivity() {
 
@@ -20,8 +21,8 @@ class MyContactsActivity : AppCompatActivity() {
         if(!App.isFeatureNavigationEnable && savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.frame_container, MyContactsFragment(), "activityToContactsFragment")
-                .addToBackStack("activityToContactsFragment")
+                .replace(R.id.frame_container, MyContactsFragment(), TRANSACTION_TO_CONTACTS)
+                .addToBackStack(TRANSACTION_TO_CONTACTS)
                 .commit()
         }
     }

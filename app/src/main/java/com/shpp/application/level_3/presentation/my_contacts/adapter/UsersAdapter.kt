@@ -2,8 +2,6 @@ package com.shpp.application.level_3.presentation.my_contacts.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,38 +10,37 @@ import com.shpp.application.level_3.data.model.User
 import com.shpp.application.level_3.presentation.callBacks.diffutil.UserDiffUtilCallBack
 import com.shpp.application.level_3.presentation.my_contacts.interfaces.MyContactsAdapterListener
 import com.shpp.application.level_3.presentation.utils.extensions.downloadAndPutPhoto
+import com.shpp.application.level_3.utils.Constants.TRANSACTION_PHOTO
 
 class UsersAdapter(
     val listener: MyContactsAdapterListener
 ) : ListAdapter<User, UsersAdapter.UsersViewHolder>(UserDiffUtilCallBack()) {
 
-
-    init {
-         listener.addSwipeLeftHelper()
-    }
-
     inner class UsersViewHolder(
         private val binding: ItemUserBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-
-        fun bind(user: User) { // TODO: decompose
+        fun bind(user: User) {
             with(binding) {
                 name.text = user.name
                 job.text = user.job
-                basket.tag = user // TODO: what it
-                basket.setOnClickListener {
-                    listener.onDeleteClick(user)
-                }
-
-                root.setOnClickListener {
-                    val extras = FragmentNavigatorExtras(
-                        binding.avatarUser to "transitionPhoto" // TODO: to constants
-                    )
-                    binding.avatarUser.transitionName = "transaction_${user.id}" // TODO: to constants
-                    listener.onClick(user, extras)
-                }
+                basket.tag = user
+                setListeners(user)
                 avatarUser.downloadAndPutPhoto(user.photo)
+            }
+        }
+
+        private fun setListeners(user: User) {
+            binding.root.setOnClickListener {
+                val extras = FragmentNavigatorExtras(
+                    binding.avatarUser to TRANSACTION_PHOTO
+                )
+                binding.avatarUser.transitionName = "transaction_${user.id}"
+                listener.onClick(user, extras)
+            }
+
+            binding.basket.setOnClickListener {
+                listener.onDeleteClick(user)
             }
         }
 

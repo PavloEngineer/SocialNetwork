@@ -10,8 +10,9 @@ object Constants {
      */
     const val MILLIS_DURATION: Int = 5000
 
-    /**
-     * Speed time.
-     */
-    const val COUNT_INTERVAL: Long = 1000
+    const val ADD_USER_TAG: String = "DialogFragment"
+
+    const val TRANSACTION_TO_DETAILS = "ToDetailsFragment"
+    const val TRANSACTION_TO_CONTACTS = "activityToContactsFragment"
+    const val TRANSACTION_PHOTO = "transitionPhoto"
 }
