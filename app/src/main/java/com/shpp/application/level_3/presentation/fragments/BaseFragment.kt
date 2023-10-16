@@ -1,12 +1,10 @@
-package com.shpp.application.level_3.presentation.my_contacts
+package com.shpp.application.level_3.presentation.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
 import com.shpp.application.level_3.utils.Constants.MILLIS_DURATION

@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/baselineBack"
+        android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_arrow_back_24"
@@ -31,22 +31,22 @@
         android:id="@+id/textContactsView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/baselineBack"
-        app:layout_constraintEnd_toStartOf="@id/baselineSearch"
-        app:layout_constraintTop_toTopOf="@id/baselineBack"
-        app:layout_constraintBottom_toBottomOf="@id/baselineBack"
+        app:layout_constraintStart_toEndOf="@id/buttonBack"
+        app:layout_constraintEnd_toStartOf="@id/buttonSearch"
+        app:layout_constraintTop_toTopOf="@id/buttonBack"
+        app:layout_constraintBottom_toBottomOf="@id/buttonBack"
         android:text="@string/text_contacts"
         android:textColor="@color/profileTitle"
         android:textSize="@dimen/size_title_text"
         android:fontFamily="@font/opensans_semibold" />
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/baselineSearch"
+        android:id="@+id/buttonSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_search_24"
         android:backgroundTint="@color/colorAccent"
-        app:layout_constraintTop_toTopOf="@id/baselineBack"
+        app:layout_constraintTop_toTopOf="@id/buttonBack"
         app:layout_constraintStart_toEndOf="@id/textContactsView"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="@dimen/normal_margin" />
@@ -65,7 +65,7 @@
         android:layout_marginStart="@dimen/normal_margin"
         android:layout_marginTop="@dimen/small_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/baselineBack" />
+        app:layout_constraintTop_toBottomOf="@id/buttonBack" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerUsers"

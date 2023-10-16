@@ -27,7 +27,7 @@
         android:layout_marginStart="@dimen/normal_margin">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/name"
+            android:id="@+id/textName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -38,7 +38,7 @@
             android:textSize="@dimen/size_name_text" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/job"
+            android:id="@+id/textViewJob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -50,7 +50,7 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/basket"
+        android:id="@+id/buttonBasket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorAccent"

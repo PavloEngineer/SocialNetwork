@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/myContactsFragment"
-        android:name="com.shpp.application.level_3.presentation.my_contacts.fragments.MyContactsFragment"
+        android:name="com.shpp.application.level_3.presentation.fragments.my_contacts.MyContactsFragment"
         android:label="MyContactsFragment">
 
         <action
@@ -18,16 +18,16 @@
 
     <fragment
         android:id="@+id/detailsContactFragment"
-        android:name="com.shpp.application.level_3.presentation.my_contacts.fragments.DetailsContactFragment"
+        android:name="com.shpp.application.level_3.presentation.fragments.DetailsContactFragment"
         android:label="DetailsContactFragment">
 
         <action
             android:id="@+id/action_detailsContactFragment_to_myContactsFragment"
             app:destination="@id/myContactsFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_in_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_in_left" />
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <argument
             android:name="name"
             app:argType="string" />

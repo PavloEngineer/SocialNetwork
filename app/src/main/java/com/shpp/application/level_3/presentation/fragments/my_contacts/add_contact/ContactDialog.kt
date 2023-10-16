@@ -1,4 +1,4 @@
-package com.shpp.application.level_3.presentation.my_contacts.add_contact
+package com.shpp.application.level_3.presentation.fragments.my_contacts.add_contact
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -52,7 +52,7 @@ class ContactDialog : DialogFragment() {
     }
 
     private fun addBaselineListener() {
-        bindingAdd.baselineBack.setOnClickListener {
+        bindingAdd.buttonBack.setOnClickListener {
             dismiss()
         }
     }
@@ -60,12 +60,12 @@ class ContactDialog : DialogFragment() {
     private fun addNewUser() {
         with(bindingAdd) {
             val user = User(
-                name = editUsername.text.toString(),
-                job = editCareer.text.toString(),
-                address = editAddress.text.toString(),
-                email = editEmail.text.toString(),
-                birth = editBirth.text.toString(),
-                phone = editPhone.text.toString(),
+                name = editTextUsername.text.toString(),
+                job = editTextCareer.text.toString(),
+                address = editTextAddress.text.toString(),
+                email = editTextEmail.text.toString(),
+                birth = editTextBirth.text.toString(),
+                phone = editTextPhone.text.toString(),
                 photo = urlAvatar
             )
             Log.d("myLog", user.toString())

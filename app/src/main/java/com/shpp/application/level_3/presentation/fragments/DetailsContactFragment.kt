@@ -1,19 +1,15 @@
-package com.shpp.application.level_3.presentation.my_contacts.fragments
+package com.shpp.application.level_3.presentation.fragments
 
 import android.os.Bundle
 import android.transition.TransitionInflater
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.shpp.application.R
 import com.shpp.application.databinding.FragmentContactDetailsBinding
-import com.shpp.application.databinding.FragmentMyContactsBinding
 import com.shpp.application.level_3.App
 import com.shpp.application.level_3.data.enum.UserInfo
-import com.shpp.application.level_3.presentation.my_contacts.BaseFragment
+import com.shpp.application.level_3.presentation.fragments.my_contacts.MyContactsFragment
 import com.shpp.application.level_3.presentation.utils.extensions.downloadAndPutPhoto
 import com.shpp.application.level_3.utils.Constants.TRANSACTION_TO_CONTACTS
 
@@ -34,7 +30,7 @@ class DetailsContactFragment :
     }
 
     override fun setListeners() {
-        binding.baselineBack.setOnClickListener {
+        binding.buttonBack.setOnClickListener {
             startContactsFragment()
         }
     }
@@ -43,12 +39,12 @@ class DetailsContactFragment :
         with(binding) {
             if (App.isFeatureNavigationEnable) {
                 avatar.downloadAndPutPhoto(navigationArgs.photoAddress)
-                textName.text = navigationArgs.name
+                textViewName.text = navigationArgs.name
                 textCareer.text = navigationArgs.career
                 textAddress.text = navigationArgs.address
             } else {
                 arguments?.let {
-                    textName.text = it.getString(UserInfo.NAME.key)
+                    textViewName.text = it.getString(UserInfo.NAME.key)
                     textCareer.text = it.getString(UserInfo.CAREER.key)
                     textAddress.text = it.getString(UserInfo.ADDRESS.key)
                     avatar.downloadAndPutPhoto(it.getString(UserInfo.PHOTO_ADDRESS.key))

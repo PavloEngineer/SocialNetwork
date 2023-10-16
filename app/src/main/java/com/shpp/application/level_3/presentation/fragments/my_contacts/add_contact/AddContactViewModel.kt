@@ -1,4 +1,4 @@
-package com.shpp.application.level_3.presentation.my_contacts.add_contact
+package com.shpp.application.level_3.presentation.fragments.my_contacts.add_contact
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

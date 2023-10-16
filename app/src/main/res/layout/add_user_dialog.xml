@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/baselineBack"
+            android:id="@+id/buttonBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/normal_margin"
@@ -39,10 +39,10 @@
             android:text="@string/add_contact"
             android:textColor="@color/profileTitle"
             android:textSize="@dimen/size_title_text"
-            app:layout_constraintBottom_toBottomOf="@id/baselineBack"
+            app:layout_constraintBottom_toBottomOf="@id/buttonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/baselineBack" />
+            app:layout_constraintTop_toTopOf="@id/buttonBack" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/avatar"
@@ -67,7 +67,7 @@
             app:layout_constraintTop_toTopOf="@id/avatar" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/labelUsername"
+            android:id="@+id/textViewUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/label_margin"
@@ -80,7 +80,7 @@
             app:layout_constraintTop_toBottomOf="@id/viewBar" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editUsername"
+            android:id="@+id/editTextUsername"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/normal_margin"
@@ -89,19 +89,18 @@
             android:backgroundTint="@color/greyAuth"
             android:fontFamily="@font/opensans_semibold"
             android:inputType="text"
-            android:labelFor="@id/labelUsername"
+            android:labelFor="@id/textViewUsername"
             android:paddingStart="@dimen/small_padding"
             android:paddingEnd="@dimen/small_padding"
             android:textColor="@color/itemNameColor"
             android:textSize="@dimen/size_name_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelUsername"
-            android:hint="@string/hint_username"
-            />
+            app:layout_constraintTop_toBottomOf="@id/textViewUsername"
+            android:hint="@string/hint_username" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/labelCareer"
+            android:id="@+id/textViewCareer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/label_margin"
@@ -111,10 +110,10 @@
             android:textColor="@color/greyAuth"
             android:textSize="@dimen/size_job_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editUsername" />
+            app:layout_constraintTop_toBottomOf="@id/editTextUsername" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editCareer"
+            android:id="@+id/editTextCareer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/normal_margin"
@@ -123,19 +122,18 @@
             android:backgroundTint="@color/greyAuth"
             android:fontFamily="@font/opensans_semibold"
             android:inputType="text"
-            android:labelFor="@id/labelCareer"
+            android:labelFor="@id/textViewCareer"
             android:paddingStart="@dimen/small_padding"
             android:paddingEnd="@dimen/small_padding"
             android:textColor="@color/itemNameColor"
             android:textSize="@dimen/size_name_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelCareer"
-            android:hint="@string/hint_career"
-            />
+            app:layout_constraintTop_toBottomOf="@id/textViewCareer"
+            android:hint="@string/hint_career" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/labelEmail"
+            android:id="@+id/textViewEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/label_margin"
@@ -145,10 +143,10 @@
             android:textColor="@color/greyAuth"
             android:textSize="@dimen/size_job_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editCareer" />
+            app:layout_constraintTop_toBottomOf="@id/editTextCareer" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editEmail"
+            android:id="@+id/editTextEmail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/normal_margin"
@@ -158,19 +156,18 @@
             android:backgroundTint="@color/greyAuth"
             android:fontFamily="@font/opensans_semibold"
             android:inputType="textEmailAddress"
-            android:labelFor="@id/labelEmail"
+            android:labelFor="@id/textViewEmail"
             android:paddingStart="@dimen/small_padding"
             android:paddingEnd="@dimen/small_padding"
             android:textColor="@color/itemNameColor"
             android:textSize="@dimen/size_name_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelEmail"
-            android:hint="@string/hint_email"
-        />
+            app:layout_constraintTop_toBottomOf="@id/textViewEmail"
+            android:hint="@string/hint_email" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/labelPhone"
+            android:id="@+id/textViewPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/label_margin"
@@ -180,10 +177,10 @@
             android:textColor="@color/greyAuth"
             android:textSize="@dimen/size_job_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editEmail" />
+            app:layout_constraintTop_toBottomOf="@id/editTextEmail" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editPhone"
+            android:id="@+id/editTextPhone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/normal_margin"
@@ -192,19 +189,18 @@
             android:backgroundTint="@color/greyAuth"
             android:fontFamily="@font/opensans_semibold"
             android:inputType="phone"
-            android:labelFor="@id/labelPhone"
+            android:labelFor="@id/textViewPhone"
             android:paddingStart="@dimen/small_padding"
             android:paddingEnd="@dimen/small_padding"
             android:textColor="@color/itemNameColor"
             android:textSize="@dimen/size_name_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelPhone"
-            android:hint="@string/hint_number"
-            />
+            app:layout_constraintTop_toBottomOf="@id/textViewPhone"
+            android:hint="@string/hint_number" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/labelAddress"
+            android:id="@+id/textViewAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/label_margin"
@@ -214,10 +210,10 @@
             android:textColor="@color/greyAuth"
             android:textSize="@dimen/size_job_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editPhone" />
+            app:layout_constraintTop_toBottomOf="@id/editTextPhone" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editAddress"
+            android:id="@+id/editTextAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/normal_margin"
@@ -226,17 +222,17 @@
             android:backgroundTint="@color/greyAuth"
             android:fontFamily="@font/opensans_semibold"
             android:inputType="text"
-            android:labelFor="@id/labelAddress"
+            android:labelFor="@id/textViewAddress"
             android:paddingStart="@dimen/small_padding"
             android:paddingEnd="@dimen/small_padding"
             android:textColor="@color/itemNameColor"
             android:textSize="@dimen/size_name_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelAddress" />
+            app:layout_constraintTop_toBottomOf="@id/textViewAddress" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/labelBirth"
+            android:id="@+id/textViewBirth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/label_margin"
@@ -246,10 +242,10 @@
             android:textColor="@color/greyAuth"
             android:textSize="@dimen/size_job_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editAddress" />
+            app:layout_constraintTop_toBottomOf="@id/editTextAddress" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editBirth"
+            android:id="@+id/editTextBirth"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/normal_margin"
@@ -258,14 +254,14 @@
             android:backgroundTint="@color/greyAuth"
             android:fontFamily="@font/opensans_semibold"
             android:inputType="date"
-            android:labelFor="@id/labelBirth"
+            android:labelFor="@id/textViewBirth"
             android:paddingStart="@dimen/small_padding"
             android:paddingEnd="@dimen/small_padding"
             android:textColor="@color/itemNameColor"
             android:textSize="@dimen/size_name_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelBirth" />
+            app:layout_constraintTop_toBottomOf="@id/textViewBirth" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonSave"
@@ -273,7 +269,7 @@
             android:layout_height="55dp"
             android:layout_marginHorizontal="@dimen/normal_margin"
             android:layout_marginVertical="@dimen/normal_margin"
-            android:background="@drawable/bc_view_my_contacts"
+            android:background="@drawable/bg_view_my_contacts"
             android:fontFamily="@font/opensans_semibold"
             android:text="@string/save"
             android:textColor="@color/white"
@@ -281,6 +277,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editBirth" />
+            app:layout_constraintTop_toBottomOf="@id/editTextBirth" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

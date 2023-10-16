@@ -1,9 +1,7 @@
-package com.shpp.application.level_3.presentation.my_contacts.fragments
+package com.shpp.application.level_3.presentation.fragments.my_contacts
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
@@ -11,19 +9,18 @@ import androidx.navigation.fragment.FragmentNavigator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.shpp.application.R
-import com.shpp.application.databinding.AddUserDialogBinding.inflate
 import com.shpp.application.databinding.FragmentMyContactsBinding
 import com.shpp.application.level_3.App
 import com.shpp.application.level_3.data.enum.UserInfo
 import com.shpp.application.level_3.data.model.User
 import com.shpp.application.level_3.presentation.callBacks.SwipeToDeleteCallback
-import com.shpp.application.level_3.presentation.my_contacts.BaseFragment
-import com.shpp.application.level_3.presentation.my_contacts.FunctionForSnack
-import com.shpp.application.level_3.presentation.my_contacts.MyContactsViewModel
-import com.shpp.application.level_3.presentation.my_contacts.adapter.UsersAdapter
-import com.shpp.application.level_3.presentation.my_contacts.add_contact.ContactDialog
-import com.shpp.application.level_3.presentation.my_contacts.interfaces.MyContactsAdapterListener
+import com.shpp.application.level_3.presentation.fragments.BaseFragment
+import com.shpp.application.level_3.presentation.fragments.DetailsContactFragment
+import com.shpp.application.level_3.presentation.fragments.my_contacts.adapter.UsersAdapter
+import com.shpp.application.level_3.presentation.fragments.my_contacts.add_contact.ContactDialog
+import com.shpp.application.level_3.presentation.interfaces.MyContactsAdapterListener
 import com.shpp.application.level_3.utils.Constants
 import com.shpp.application.level_3.utils.Constants.ADD_USER_TAG
 import com.shpp.application.level_3.utils.Constants.TRANSACTION_TO_DETAILS
@@ -42,7 +39,7 @@ class MyContactsFragment : BaseFragment<FragmentMyContactsBinding>(FragmentMyCon
                 override fun onDeleteClick(contact: User) {
                     viewModel.deleteUser(contact)
                     showSnackBar(
-                        "Remove!", R.string.snackbar_undo
+                        "Removed!", R.string.snackbar_undo
                     ) { viewModel.restoreLastDeletedUser() }
                 }
             }

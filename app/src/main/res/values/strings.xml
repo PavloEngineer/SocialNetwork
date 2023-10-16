@@ -13,7 +13,6 @@
     <string name="text_title_profile">Profile</string>
     <string name="text_button_message">Message</string>
 
-
     <!-- authentication screen -->
     <string name="label_lets_get">Let\'s get acquainted</string>
     <string name="label_bottom_title">Fill out the profile and go to the application!</string>
@@ -27,7 +26,6 @@
     <string name="text_signIn">Sign in</string>
     <string name="error_email">Incorrect. Check syntax</string>
     <string name="error_password">Unreliable password.Use upper and lower case, digits</string>
-
 
     <!-- My contacts screen -->
     <string name="text_contacts" >Contacts</string>

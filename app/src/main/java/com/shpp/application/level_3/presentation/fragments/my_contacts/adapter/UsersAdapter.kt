@@ -1,4 +1,4 @@
-package com.shpp.application.level_3.presentation.my_contacts.adapter
+package com.shpp.application.level_3.presentation.fragments.my_contacts.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shpp.application.databinding.ItemUserBinding
 import com.shpp.application.level_3.data.model.User
 import com.shpp.application.level_3.presentation.callBacks.diffutil.UserDiffUtilCallBack
-import com.shpp.application.level_3.presentation.my_contacts.interfaces.MyContactsAdapterListener
+import com.shpp.application.level_3.presentation.interfaces.MyContactsAdapterListener
 import com.shpp.application.level_3.presentation.utils.extensions.downloadAndPutPhoto
 import com.shpp.application.level_3.utils.Constants.TRANSACTION_PHOTO
 
@@ -22,9 +22,9 @@ class UsersAdapter(
 
         fun bind(user: User) {
             with(binding) {
-                name.text = user.name
-                job.text = user.job
-                basket.tag = user
+                textName.text = user.name
+                textViewJob.text = user.job
+                buttonBasket.tag = user
                 setListeners(user)
                 avatarUser.downloadAndPutPhoto(user.photo)
             }
@@ -39,7 +39,7 @@ class UsersAdapter(
                 listener.onClick(user, extras)
             }
 
-            binding.basket.setOnClickListener {
+            binding.buttonBasket.setOnClickListener {
                 listener.onDeleteClick(user)
             }
         }

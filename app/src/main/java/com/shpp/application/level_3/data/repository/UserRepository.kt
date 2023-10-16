@@ -50,7 +50,6 @@ class UserRepository {
         }
     }
 
-
     fun restoreLastDeletedUser() {
         lastDeletedUser?.let {user ->
             addUser(user.first, user.second)
@@ -82,7 +81,6 @@ class UserRepository {
                 }
         }
     }
-
 
     companion object {
         private val IMAGES = listOf(

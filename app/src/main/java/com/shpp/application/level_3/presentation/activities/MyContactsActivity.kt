@@ -1,11 +1,11 @@
-package com.shpp.application.level_3.presentation.my_contacts
+package com.shpp.application.level_3.presentation.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.shpp.application.R
 import com.shpp.application.databinding.MyContactsActivityBinding
 import com.shpp.application.level_3.App
-import com.shpp.application.level_3.presentation.my_contacts.fragments.MyContactsFragment
+import com.shpp.application.level_3.presentation.fragments.my_contacts.MyContactsFragment
 import com.shpp.application.level_3.utils.Constants.TRANSACTION_TO_CONTACTS
 
 class MyContactsActivity : AppCompatActivity() {

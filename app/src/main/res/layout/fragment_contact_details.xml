@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <View
-        android:id="@+id/photoProfile"
+        android:id="@+id/viewProfile"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:layout_constraintHeight_percent="0.5"
@@ -14,7 +14,7 @@
         android:background="@color/profileBlue" />
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/baselineBack"
+        android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/normal_margin"
@@ -25,17 +25,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/title"
+        android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/text_title_profile"
         android:textColor="@color/profileTitle"
         android:textSize="@dimen/size_title_text"
         app:fontFamily="@font/opensans_semibold"
-        app:layout_constraintBottom_toBottomOf="@id/baselineBack"
+        app:layout_constraintBottom_toBottomOf="@id/buttonBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/baselineBack" />
+        app:layout_constraintTop_toTopOf="@id/buttonBack" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/avatar"
@@ -46,11 +46,11 @@
         app:srcCompat="@drawable/ic_avatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
         app:shapeAppearanceOverlay="@style/circular" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textName"
+        android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/name_myProfile"
@@ -71,7 +71,7 @@
         android:textColor="@color/textJob"
         android:textSize="@dimen/size_job_text"
         app:fontFamily="@font/opensans_semibold"
-        app:layout_constraintTop_toBottomOf="@id/textName"
+        app:layout_constraintTop_toBottomOf="@id/textViewName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/small_margin" />
@@ -97,7 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_facebook"
-        app:layout_constraintTop_toBottomOf="@id/photoProfile"
+        app:layout_constraintTop_toBottomOf="@id/viewProfile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintBottom_toTopOf="@id/buttonViewContact"
@@ -109,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_in"
-        app:layout_constraintTop_toBottomOf="@id/photoProfile"
+        app:layout_constraintTop_toBottomOf="@id/viewProfile"
         app:layout_constraintEnd_toStartOf="@id/buttonImageInst"
         app:layout_constraintStart_toEndOf="@id/buttonImageFacebook"
         app:layout_constraintTop_toTopOf="@id/buttonImageFacebook" />
@@ -119,7 +119,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_inst"
-        app:layout_constraintTop_toBottomOf="@id/photoProfile"
+        app:layout_constraintTop_toBottomOf="@id/viewProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/buttonImageIn"
         app:layout_constraintTop_toTopOf="@id/buttonImageFacebook" />
@@ -131,7 +131,7 @@
         android:text="@string/text_button_message"
         android:fontFamily="@font/opensans_semibold"
         android:textColor="@color/white"
-        android:background="@drawable/bc_view_my_contacts"
+        android:background="@drawable/bg_view_my_contacts"
         android:textSize="@dimen/size_register_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

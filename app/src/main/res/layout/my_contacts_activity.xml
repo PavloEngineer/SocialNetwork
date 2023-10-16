@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".level_3.presentation.my_contacts.MyContactsActivity">
+    tools:context=".level_3.presentation.activities.MyContactsActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/frame_container"
@@ -13,5 +13,4 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:navGraph = "@navigation/my_nav"
         app:defaultNavHost="true"/>
-
 </FrameLayout>
