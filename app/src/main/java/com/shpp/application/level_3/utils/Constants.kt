@@ -2,7 +2,7 @@ package com.shpp.application.level_3.utils
 
 object Constants {
 
-    const val NUMBER_USERS = 15
+    const val NUMBER_USERS = 100
     const val ZERO_POSITION = 0
 
     /**
