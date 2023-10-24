@@ -42,4 +42,8 @@
     <string name="label_address">Адреса</string>
     <string name="label_birth">Дата народження</string>
     <string name="save">Зберегти</string>
+
+    <!-- ViewPager fragment. Names of fragments  -->
+    <string name="profile_screen">Профіль</string>
+    <string name="my_contacts_screen">Контакти</string>
 </resources>

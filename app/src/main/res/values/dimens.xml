@@ -25,6 +25,9 @@
     <dimen name="view_height">140dp</dimen>
     <dimen name="large_view_height">200dp</dimen>
     <dimen name="size_user_avatar">48dp</dimen>
+	<dimen name="width_google">370dp</dimen>
+
+	<dimen name="height_google">45dp</dimen>
 
     <!-- Text size -->
     <dimen name="size_title_text">24sp</dimen>
@@ -32,5 +35,7 @@
     <dimen name="size_job_text">14sp</dimen>
     <dimen name="size_bottom_title">12sp</dimen>
     <dimen name="size_register_button">16sp</dimen>
+	<dimen name="size_google_button">20sp</dimen>
+	
 
 </resources>

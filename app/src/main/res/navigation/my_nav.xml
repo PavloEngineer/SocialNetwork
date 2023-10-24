@@ -2,32 +2,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/myContactsFragment">
-
-    <fragment
-        android:id="@+id/myContactsFragment"
-        android:name="com.shpp.application.level_3.presentation.fragments.my_contacts.MyContactsFragment"
-        android:label="MyContactsFragment">
-
-        <action
-            android:id="@+id/action_myContactsFragment_to_detailsContactFragment"
-            app:destination="@id/detailsContactFragment">
-        </action>
-
-    </fragment>
+    app:startDestination="@id/viewPagerFragment">
 
     <fragment
         android:id="@+id/detailsContactFragment"
-        android:name="com.shpp.application.level_3.presentation.fragments.DetailsContactFragment"
+        android:name="com.shpp.application.level_4.presentation.fragments.DetailsContactFragment"
         android:label="DetailsContactFragment">
 
-        <action
-            android:id="@+id/action_detailsContactFragment_to_myContactsFragment"
-            app:destination="@id/myContactsFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <argument
             android:name="name"
             app:argType="string" />
@@ -40,5 +21,17 @@
         <argument
             android:name="photoAddress"
             app:argType="string" />
+        <action
+            android:id="@+id/action_detailsContactFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.shpp.application.level_4.presentation.fragments.viewPager_fragment.ViewPagerFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_viewpager" >
+        <action
+            android:id="@+id/action_viewPagerFragment_to_detailsContactFragment"
+            app:destination="@id/detailsContactFragment" />
     </fragment>
 </navigation>

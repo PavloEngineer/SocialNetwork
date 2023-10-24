@@ -26,6 +26,7 @@
     <string name="text_signIn">Sign in</string>
     <string name="error_email">Incorrect. Check syntax</string>
     <string name="error_password">Unreliable password.Use upper and lower case, digits</string>
+    <string name="button_google" translatable="false">Google</string>
 
     <!-- My contacts screen -->
     <string name="text_contacts" >Contacts</string>
@@ -49,5 +50,9 @@
     <!-- Transaction -->
     <string name="transaction_photo_item" translatable="false">photoItem</string>
     <string name="transaction_photo_profile" translatable="false">photoProfile</string>
+
+    <!-- ViewPager fragment. Names of fragments  -->
+    <string name="profile_screen">Profile</string>
+    <string name="my_contacts_screen">Contacts</string>
 
 </resources>
