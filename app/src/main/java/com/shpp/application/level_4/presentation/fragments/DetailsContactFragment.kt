@@ -7,7 +7,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.shpp.application.R
 import com.shpp.application.databinding.FragmentContactDetailsBinding
+import com.shpp.application.level_4.presentation.fragments.viewPager_fragment.ViewPagerFragment
 import com.shpp.application.level_4.presentation.utils.extensions.downloadAndPutPhoto
+import com.shpp.application.level_4.utils.Constants
 
 class DetailsContactFragment :
     BaseFragment<FragmentContactDetailsBinding>(FragmentContactDetailsBinding::inflate) {
@@ -27,7 +29,7 @@ class DetailsContactFragment :
 
     override fun setListeners() {
         binding.buttonBack.setOnClickListener {
-            startContactsFragment()
+            startViewPagerFragment()
         }
     }
 
@@ -40,7 +42,8 @@ class DetailsContactFragment :
         }
     }
 
-    private fun startContactsFragment() {
+    private fun startViewPagerFragment() {
+        (parentFragment as ViewPagerFragment).switchToPage(1)
         val direction =
             DetailsContactFragmentDirections.actionDetailsContactFragmentToViewPagerFragment()
         findNavController().navigate(direction)

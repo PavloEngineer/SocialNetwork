@@ -17,7 +17,9 @@ import com.shpp.application.level_4.presentation.fragments.BaseFragment
 import com.shpp.application.level_4.presentation.fragments.viewPager_fragment.ViewPagerFragment
 import com.shpp.application.level_4.presentation.fragments.my_contacts.adapter.UsersAdapter
 import com.shpp.application.level_4.presentation.fragments.my_contacts.add_contact.ContactDialog
+import com.shpp.application.level_4.presentation.fragments.my_contacts.model.ContactItem
 import com.shpp.application.level_4.presentation.fragments.viewPager_fragment.ViewPagerFragmentDirections
+import com.shpp.application.level_4.presentation.interfaces.ContactSelectionListener
 import com.shpp.application.level_4.presentation.interfaces.MyContactsAdapterListener
 import com.shpp.application.level_4.utils.Constants
 import com.shpp.application.level_4.utils.Constants.ADD_USER_TAG
@@ -41,6 +43,36 @@ class MyContactsFragment :
                         "Removed!", R.string.snackbar_undo
                     ) { viewModel.restoreLastDeletedUser() }
                 }
+
+                override fun onLongClick(contactItem: ContactItem) {
+                    // Ваш код для взаємодії з режимом виділення
+                    if (viewModel.selectionModeLiveData.value == true) {
+                        // Якщо вже в режимі виділення, то переключайте стан виділення контакта
+                        viewModel.toggle(contactItem)
+                    } else {
+                        // Інакше, увімкніть режим виділення та позначайте контакт
+                        viewModel.enableSelectionMode()
+                        viewModel.toggle(contactItem)
+                    }
+                }
+
+                override fun onCheckClick(contact: User, isChecked: Boolean) {
+                    viewModel.toggle(ContactItem(contact, isChecked))
+                }
+            },
+
+            contactSelectionListener = object : ContactSelectionListener {
+                override fun onContactSelectionChanged(contactItem: ContactItem) {
+                   binding.buttonMultiDelete.visibility = when (binding.buttonMultiDelete.visibility) {
+                       View.VISIBLE -> View.GONE
+                       View.GONE -> View.VISIBLE
+                       else -> {View.GONE}
+                   }
+                }
+
+                override fun isCheck(user: User): Boolean {
+                    return viewModel.isCheck(user)
+                }
             }
         )
     }
@@ -52,9 +84,16 @@ class MyContactsFragment :
 
     override fun setListeners() {
         addVisibleButtonScrollListener()
+        addMultiDeleteListener()
         addScrollClickedListener()
         addListenerAddContact()
         addListenerBackToProfile()
+    }
+
+    private fun addMultiDeleteListener() {
+        binding.buttonMultiDelete.setOnClickListener{
+            viewModel.deleteSelectedContacts()
+        }
     }
 
     override fun onStart() {

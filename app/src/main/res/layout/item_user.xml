@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/normal_margin"
@@ -12,12 +13,21 @@
     android:paddingHorizontal="@dimen/small_padding"
     android:paddingVertical="@dimen/small_padding">
 
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/checkboxItem"
+        android:layout_width="@dimen/width_checkbox_item"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/small_margin"
+        android:layout_marginVertical="@dimen/small_margin"
+        android:button="@drawable/bg_checkbox_item"
+        android:visibility="gone" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/avatarUser"
-        android:layout_width="@dimen/size_user_avatar"
-        android:layout_height="@dimen/size_user_avatar"
-
-        app:srcCompat="@drawable/ic_user_avatar" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/small_margin"
+        app:srcCompat="@drawable/ic_user_avatar"/>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -33,6 +43,7 @@
             android:ellipsize="end"
             android:fontFamily="@font/opensans_semibold"
             android:lines="1"
+            android:layout_marginTop="@dimen/small_margin"
             android:text="@string/name_myProfile"
             android:textColor="@color/itemNameColor"
             android:textSize="@dimen/size_name_text" />
@@ -53,6 +64,7 @@
         android:id="@+id/buttonBasket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/small_margin"
         android:backgroundTint="@color/colorAccent"
         android:src="@drawable/ic_basket" />
 </LinearLayout>

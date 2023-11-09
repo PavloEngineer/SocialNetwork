@@ -23,7 +23,9 @@
             app:argType="string" />
         <action
             android:id="@+id/action_detailsContactFragment_to_viewPagerFragment"
-            app:destination="@id/viewPagerFragment" />
+            app:destination="@id/viewPagerFragment"
+            app:popUpTo="@id/detailsContactFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/viewPagerFragment"
@@ -32,6 +34,8 @@
         tools:layout="@layout/fragment_viewpager" >
         <action
             android:id="@+id/action_viewPagerFragment_to_detailsContactFragment"
-            app:destination="@id/detailsContactFragment" />
+            app:destination="@id/detailsContactFragment"
+            app:popUpTo="@id/viewPagerFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

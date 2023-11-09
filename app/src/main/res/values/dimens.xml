@@ -26,6 +26,7 @@
     <dimen name="large_view_height">200dp</dimen>
     <dimen name="size_user_avatar">48dp</dimen>
 	<dimen name="width_google">370dp</dimen>
+    <dimen name="width_checkbox_item">20dp</dimen>
 
 	<dimen name="height_google">45dp</dimen>
 
