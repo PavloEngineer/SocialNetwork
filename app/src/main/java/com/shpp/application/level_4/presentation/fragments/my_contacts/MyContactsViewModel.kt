@@ -1,5 +1,6 @@
 package com.shpp.application.level_4.presentation.fragments.my_contacts
 
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,14 +19,13 @@ class MyContactsViewModel (
     private val usersService: UserRepository = App.userRepository
     val users: LiveData<List<User>> = usersService.users
 
-    val contactsLiveData: LiveData<List<ContactItem>> get() = _contactsLiveData
     val selectionModeLiveData: LiveData<Boolean> get() = _selectionModeLiveData
 
+    val contactsLiveData: LiveData<List<ContactItem>> get() = _contactsLiveData
     private val _contactsLiveData = MutableLiveData<List<ContactItem>>()
     private val _selectionModeLiveData = MutableLiveData<Boolean>()
 
     init {
-        _contactsLiveData.value = users.value?.map { ContactItem(it, false) } ?: emptyList()
         _selectionModeLiveData.value = false
     }
 
@@ -36,15 +36,15 @@ class MyContactsViewModel (
 
     // Метод для вимикання режиму виділення
     fun disableSelectionMode() {
-        _selectionModeLiveData.value = false
-        // Скидайте виділення для всіх контактів
-        _contactsLiveData.value = _contactsLiveData.value?.map { it.copy(isChecked = false) }
+        val hasLeastOneCheckContact = contactsLiveData.value?.find { it.isChecked }
+        if (hasLeastOneCheckContact == null) {
+            _selectionModeLiveData.value = false
+        }
     }
 
     // Метод для видалення виділених контактів
     fun deleteSelectedContacts() {
         usersService.deleteSelectedItems(_contactsLiveData.value)
-        _contactsLiveData.value = users.value?.map { ContactItem(it, false) } ?: emptyList()
     }
 
     fun toggle(contactItem: ContactItem) {
@@ -73,16 +73,19 @@ class MyContactsViewModel (
         usersService.deleteUser(user)
     }
 
-    fun addUser(
-        user: User,
-        index: Int? = null
-    ) {
-        usersService.addUser(user, index)
-    }
-
     fun deleteUserByPosition(position: Int) {
         users.value?.let {
             deleteUser(it[position])
         }
+    }
+
+   fun updateContactsSelectionMode() {
+       if (_contactsLiveData.isInitialized) {
+           _contactsLiveData.value = users.value?.map { user ->
+               ContactItem(user, _contactsLiveData.value?.find {  it.id == user.id}?.isChecked ?: false)
+           } ?: emptyList()
+       } else {
+           _contactsLiveData.value = users.value?.map { ContactItem(it, false) } ?: emptyList()
+       }
     }
 }

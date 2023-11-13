@@ -43,7 +43,6 @@ class DetailsContactFragment :
     }
 
     private fun startViewPagerFragment() {
-        (parentFragment as ViewPagerFragment).switchToPage(1)
         val direction =
             DetailsContactFragmentDirections.actionDetailsContactFragmentToViewPagerFragment()
         findNavController().navigate(direction)

@@ -92,8 +92,6 @@ class UserRepository {
              contactItems != null &&
                      user.id == (contactItems.find { it.id == user.id && !it.isChecked }?.id ?: -1)
          }
-
-        _users.value
     }
 
     companion object {

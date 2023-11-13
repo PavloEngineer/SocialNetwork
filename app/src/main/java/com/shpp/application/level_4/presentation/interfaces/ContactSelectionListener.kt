@@ -5,7 +5,11 @@ import com.shpp.application.level_4.presentation.fragments.my_contacts.model.Con
 
 interface ContactSelectionListener {
 
-    fun onContactSelectionChanged(item: ContactItem)
+    fun onContactSelectionActivated()
+
+    fun disableSelectionMode()
+    fun enableSelectionMode()
+    fun isSelectionModeEnabled(): Boolean
 
     fun isCheck(user: User): Boolean
 }

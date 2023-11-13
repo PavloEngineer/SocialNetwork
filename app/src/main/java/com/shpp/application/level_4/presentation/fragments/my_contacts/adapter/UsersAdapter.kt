@@ -1,8 +1,11 @@
 package com.shpp.application.level_4.presentation.fragments.my_contacts.adapter
 
+import android.annotation.SuppressLint
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.ListAdapter
@@ -22,7 +25,6 @@ class UsersAdapter(
     private val contactSelectionListener: ContactSelectionListener
 ) : ListAdapter<User, UsersAdapter.UsersViewHolder>(UserDiffUtilCallBack()) {
 
-    private var isMultiSelectionEnabled = false
 
     inner class UsersViewHolder(
         private val binding: ItemUserBinding
@@ -33,12 +35,64 @@ class UsersAdapter(
                 textName.text = user.name
                 textViewJob.text = user.job
                 buttonBasket.tag = user
-                setListeners(user)
                 avatarUser.downloadAndPutPhoto(user.photo)
-            }
 
-            if (!isMultiSelectionEnabled) {
-                changeDesignToSimpleState()
+                if (contactSelectionListener.isSelectionModeEnabled()) {
+                    checkboxItem.isChecked = contactSelectionListener.isCheck(user)
+                    removeSimpleListeners()
+                    setMultiSelectListeners(user)
+                    changeDesignForMultiSelect()
+                } else {
+                    setSimpleListeners(user)
+                    changeDesignToSimpleState()
+                }
+            }
+        }
+
+        private fun removeSimpleListeners() {
+            with(binding) {
+                if (buttonBasket.hasOnClickListeners()) {
+                    buttonBasket.setOnClickListener(null)
+                    root.setOnLongClickListener(null)
+                }
+            }
+        }
+
+        private fun setSimpleListeners(user: User) {
+            with(binding) {
+                root.setOnClickListener {
+                    val extras = FragmentNavigatorExtras(
+                        avatarUser to TRANSACTION_PHOTO
+                    )
+                    avatarUser.transitionName = "transaction_${user.id}"
+                    listener.onClick(user, extras)
+                }
+
+                buttonBasket.setOnClickListener {
+                    listener.onDeleteClick(user)
+                }
+
+                root.setOnLongClickListener {
+                   contactSelectionListener.enableSelectionMode()
+                    contactSelectionListener.onContactSelectionActivated()
+                    listener.onLongClick(ContactItem(user, true))
+                    true
+                }
+            }
+        }
+
+        private fun setMultiSelectListeners(user: User) {
+            with(binding) {
+                checkboxItem.setOnClickListener {
+                    listener.onCheckClick(user, checkboxItem.isChecked)
+                    contactSelectionListener.disableSelectionMode()
+                }
+
+                root.setOnClickListener {
+                    checkboxItem.isChecked = !checkboxItem.isChecked
+                    listener.onCheckClick(user, checkboxItem.isChecked)
+                    contactSelectionListener.disableSelectionMode()
+                }
             }
         }
 
@@ -48,41 +102,6 @@ class UsersAdapter(
                 checkboxItem.visibility = View.GONE
                 val background = ContextCompat.getDrawable(binding.root.context, R.drawable.item_border)
                 root.background = background
-            }
-        }
-
-        private fun setListeners(user: User) {
-            with (binding) {
-                root.setOnClickListener {
-                    val extras = FragmentNavigatorExtras(
-                        avatarUser to TRANSACTION_PHOTO
-                    )
-                    avatarUser.transitionName = "transaction_${user.id}"
-                    listener.onClick(user, extras)
-                }
-
-                root.setOnLongClickListener {
-                    if (!isMultiSelectionEnabled) {
-                        contactSelectionListener.onContactSelectionChanged(ContactItem(user, false))
-                        isMultiSelectionEnabled = true
-                    }
-                    true
-                }
-
-                checkboxItem.setOnClickListener {
-                    listener.onCheckClick(user, checkboxItem.isChecked)
-                }
-
-                buttonBasket.setOnClickListener {
-                    listener.onDeleteClick(user)
-                }
-            }
-        }
-
-        fun bindForMultiSelect(contactItem: ContactItem) {
-            with(binding) {
-                checkboxItem.isChecked = contactItem.isChecked
-                changeDesignForMultiSelect()
             }
         }
 
@@ -112,10 +131,5 @@ class UsersAdapter(
     override fun onBindViewHolder(
         holder: UsersViewHolder,
         position: Int
-    ){
-        holder.bind(currentList[position])
-        if (isMultiSelectionEnabled) {
-            holder.bindForMultiSelect(ContactItem(getItem(position), contactSelectionListener.isCheck(getItem(position))))
-        }
-    }
+    ) = holder.bind(currentList[position])
 }

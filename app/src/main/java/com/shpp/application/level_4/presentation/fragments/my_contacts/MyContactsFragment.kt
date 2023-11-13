@@ -1,6 +1,9 @@
 package com.shpp.application.level_4.presentation.fragments.my_contacts
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Parcelable
+import android.provider.SyncStateContract
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -30,6 +33,8 @@ class MyContactsFragment :
 
     private val viewModel: MyContactsViewModel by viewModels()
 
+    private var itemTouchHelper: ItemTouchHelper? = null
+
     private val adapter: UsersAdapter by lazy {
         UsersAdapter(
             listener = object : MyContactsAdapterListener {
@@ -45,15 +50,10 @@ class MyContactsFragment :
                 }
 
                 override fun onLongClick(contactItem: ContactItem) {
-                    // Ваш код для взаємодії з режимом виділення
-                    if (viewModel.selectionModeLiveData.value == true) {
-                        // Якщо вже в режимі виділення, то переключайте стан виділення контакта
-                        viewModel.toggle(contactItem)
-                    } else {
-                        // Інакше, увімкніть режим виділення та позначайте контакт
+                    if (viewModel.selectionModeLiveData.value == false) {
                         viewModel.enableSelectionMode()
-                        viewModel.toggle(contactItem)
                     }
+                    viewModel.toggle(contactItem)
                 }
 
                 override fun onCheckClick(contact: User, isChecked: Boolean) {
@@ -62,7 +62,7 @@ class MyContactsFragment :
             },
 
             contactSelectionListener = object : ContactSelectionListener {
-                override fun onContactSelectionChanged(contactItem: ContactItem) {
+                override fun onContactSelectionActivated() {
                    binding.buttonMultiDelete.visibility = when (binding.buttonMultiDelete.visibility) {
                        View.VISIBLE -> View.GONE
                        View.GONE -> View.VISIBLE
@@ -73,13 +73,39 @@ class MyContactsFragment :
                 override fun isCheck(user: User): Boolean {
                     return viewModel.isCheck(user)
                 }
+
+                override fun disableSelectionMode() {
+                     doDisableSelectionMode()
+                }
+
+                override fun enableSelectionMode() {
+                    viewModel.enableSelectionMode()
+                }
+
+                override fun isSelectionModeEnabled(): Boolean {
+                    return viewModel.selectionModeLiveData.value ?: false
+                }
             }
         )
+    }
+
+    private fun doDisableSelectionMode() {
+        viewModel.disableSelectionMode()
+        if (viewModel.selectionModeLiveData.value == false) {
+            binding.buttonMultiDelete.visibility = View.GONE
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        restoreButtonMultiDeleteState()
+    }
+
+    private fun restoreButtonMultiDeleteState() {
+        if (viewModel.selectionModeLiveData.value == true) {
+            binding.buttonMultiDelete.visibility = View.VISIBLE
+        }
     }
 
     override fun setListeners() {
@@ -91,8 +117,10 @@ class MyContactsFragment :
     }
 
     private fun addMultiDeleteListener() {
+
         binding.buttonMultiDelete.setOnClickListener{
             viewModel.deleteSelectedContacts()
+            doDisableSelectionMode()
         }
     }
 
@@ -100,7 +128,34 @@ class MyContactsFragment :
         super.onStart()
         viewModel.users.observe(this, Observer {
             adapter.submitList(it)
+            viewModel.updateContactsSelectionMode()
         })
+        selectModeObserve()
+    }
+
+    private fun selectModeObserve() {
+        var recyclerState: Parcelable?
+
+        // Reload RecyclerView and save the scroll state.
+        viewModel.selectionModeLiveData.observe(viewLifecycleOwner) { selectionMode ->
+            recyclerState = binding.recyclerUsers.layoutManager?.onSaveInstanceState()
+
+            binding.recyclerUsers.adapter = adapter
+
+            if (!selectionMode) {
+                binding.recyclerUsers.layoutManager?.onRestoreInstanceState(recyclerState)
+            }
+
+            changeEnablingTouchHelperTo(selectionMode)
+        }
+    }
+
+    private fun changeEnablingTouchHelperTo(enabling: Boolean) {
+        if (enabling) {
+            itemTouchHelper?.attachToRecyclerView(null)
+        } else {
+            itemTouchHelper?.attachToRecyclerView(binding.recyclerUsers)
+        }
     }
 
     private fun addListenerBackToProfile() {
@@ -114,19 +169,22 @@ class MyContactsFragment :
             val layoutManager = LinearLayoutManager(requireContext())
             this.layoutManager = layoutManager
             this.adapter = this@MyContactsFragment.adapter
-            addSnackBarBySwipe()
+            addSwipeToDelete()
         }
     }
 
-    private fun addSnackBarBySwipe() {
-        val itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback { position ->
-            viewModel.deleteUserByPosition(position)
-            showSnackBar(
-                "Remove!", R.string.snackbar_undo
-            ) { viewModel.restoreLastDeletedUser() }
-        })
-        itemTouchHelper.attachToRecyclerView(binding.recyclerUsers)
+    private fun addSwipeToDelete() {
+         itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback(
+            onSwiped = { position ->
+                viewModel.deleteUserByPosition(position)
+                showSnackBar(
+                    "Remove!", R.string.snackbar_undo
+                ) { viewModel.restoreLastDeletedUser() }
+            },
+        ))
+        itemTouchHelper!!.attachToRecyclerView(binding.recyclerUsers)
     }
+
 
     private fun addListenerAddContact() {
         binding.buttonAddContacts.setOnClickListener {
