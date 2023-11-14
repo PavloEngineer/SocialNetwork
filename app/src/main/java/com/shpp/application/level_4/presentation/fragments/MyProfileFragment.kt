@@ -16,18 +16,6 @@ class MyProfileFragment : BaseFragment<FragmentMyProfileBinding>(FragmentMyProfi
         changeTextNameView()
     }
 
-    override fun setListeners() {
-        binding.buttonLogOut.setOnClickListener { startAuthActivity() }
-        binding.buttonViewContact.setOnClickListener {
-            (parentFragment as ViewPagerFragment).switchToPage(MY_CONTACTS_SCREEN)
-        }
-    }
-
-    private fun startAuthActivity() {
-        val intent = Intent(requireContext(), AuthActivity::class.java)
-        startActivity(intent)
-    }
-
     private fun changeTextNameView() {
         val email = App.email
         if (email != null) {
@@ -45,5 +33,17 @@ class MyProfileFragment : BaseFragment<FragmentMyProfileBinding>(FragmentMyProfi
         }
 
         return fullName
+    }
+
+    override fun setListeners() {
+        binding.buttonLogOut.setOnClickListener { startAuthActivity() }
+        binding.buttonViewContact.setOnClickListener {
+            (parentFragment as ViewPagerFragment).switchToPage(MY_CONTACTS_SCREEN)
+        }
+    }
+
+    private fun startAuthActivity() {
+        val intent = Intent(requireContext(), AuthActivity::class.java)
+        startActivity(intent)
     }
 }

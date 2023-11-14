@@ -27,6 +27,7 @@
     <dimen name="size_user_avatar">48dp</dimen>
 	<dimen name="width_google">370dp</dimen>
     <dimen name="width_checkbox_item">20dp</dimen>
+    <dimen name="height_button_message">55dp</dimen>
 
 	<dimen name="height_google">45dp</dimen>
 

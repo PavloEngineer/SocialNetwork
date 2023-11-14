@@ -1,11 +1,8 @@
 package com.shpp.application.level_4.presentation.fragments.my_contacts.adapter
 
-import android.annotation.SuppressLint
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.ListAdapter
@@ -14,7 +11,7 @@ import com.shpp.application.R
 import com.shpp.application.databinding.ItemUserBinding
 import com.shpp.application.level_4.data.model.User
 import com.shpp.application.level_4.presentation.callBacks.diffutil.UserDiffUtilCallBack
-import com.shpp.application.level_4.presentation.fragments.my_contacts.model.ContactItem
+import com.shpp.application.level_4.presentation.multiselect.ContactItem
 import com.shpp.application.level_4.presentation.interfaces.ContactSelectionListener
 import com.shpp.application.level_4.presentation.interfaces.MyContactsAdapterListener
 import com.shpp.application.level_4.presentation.utils.extensions.downloadAndPutPhoto
@@ -84,13 +81,13 @@ class UsersAdapter(
         private fun setMultiSelectListeners(user: User) {
             with(binding) {
                 checkboxItem.setOnClickListener {
-                    listener.onCheckClick(user, checkboxItem.isChecked)
+                    contactSelectionListener.onCheckClick(user, checkboxItem.isChecked)
                     contactSelectionListener.disableSelectionMode()
                 }
 
                 root.setOnClickListener {
                     checkboxItem.isChecked = !checkboxItem.isChecked
-                    listener.onCheckClick(user, checkboxItem.isChecked)
+                    contactSelectionListener.onCheckClick(user, checkboxItem.isChecked)
                     contactSelectionListener.disableSelectionMode()
                 }
             }

@@ -127,7 +127,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonViewContact"
         android:layout_width="0dp"
-        android:layout_height="55dp"
+        android:layout_height="@dimen/height_button_message"
         android:text="@string/text_button_message"
         android:fontFamily="@font/opensans_semibold"
         android:textColor="@color/white"

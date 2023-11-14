@@ -18,7 +18,7 @@ class SwipeToDeleteCallback(
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            val position = viewHolder.adapterPosition
-            onSwiped(position)
+        val position = viewHolder.adapterPosition
+        onSwiped(position)
     }
 }

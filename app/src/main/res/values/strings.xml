@@ -55,4 +55,7 @@
     <string name="profile_screen">Profile</string>
     <string name="my_contacts_screen">Contacts</string>
 
+    <!-- Exceptions -->
+    <string name="unknown_fragment" translatable="false">Unknown fragment!</string>
+
 </resources>

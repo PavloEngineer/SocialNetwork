@@ -12,7 +12,6 @@ class App : Application() {
 
     companion object {
         private lateinit var _userRepository: UserRepository
-        const val isFeatureNavigationEnable: Boolean = true
         var email: String? = null
 
         val userRepository: UserRepository

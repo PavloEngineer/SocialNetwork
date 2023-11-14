@@ -1,4 +1,4 @@
-package com.shpp.application.level_4.presentation.fragments.my_contacts.model
+package com.shpp.application.level_4.presentation.multiselect
 
 import com.shpp.application.level_4.data.model.User
 import java.util.UUID

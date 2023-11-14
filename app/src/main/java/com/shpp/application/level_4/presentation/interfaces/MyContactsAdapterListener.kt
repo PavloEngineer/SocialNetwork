@@ -2,7 +2,7 @@ package com.shpp.application.level_4.presentation.interfaces
 
 import androidx.navigation.fragment.FragmentNavigator
 import com.shpp.application.level_4.data.model.User
-import com.shpp.application.level_4.presentation.fragments.my_contacts.model.ContactItem
+import com.shpp.application.level_4.presentation.multiselect.ContactItem
 
 interface MyContactsAdapterListener {
 
@@ -11,7 +11,5 @@ interface MyContactsAdapterListener {
     fun onDeleteClick(contact: User)
 
     fun onLongClick(contactItem: ContactItem)
-
-    fun onCheckClick(contact: User, isChecked: Boolean)
 
 }

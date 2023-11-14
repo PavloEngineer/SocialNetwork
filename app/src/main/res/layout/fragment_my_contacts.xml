@@ -99,6 +99,4 @@
         android:src="@drawable/ic_multi_delete"
         android:visibility="gone"
         android:backgroundTint="@color/colorAccent" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

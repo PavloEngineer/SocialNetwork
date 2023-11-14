@@ -1,9 +1,7 @@
 package com.shpp.application.level_4.presentation.fragments.my_contacts
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Parcelable
-import android.provider.SyncStateContract
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -20,7 +18,7 @@ import com.shpp.application.level_4.presentation.fragments.BaseFragment
 import com.shpp.application.level_4.presentation.fragments.viewPager_fragment.ViewPagerFragment
 import com.shpp.application.level_4.presentation.fragments.my_contacts.adapter.UsersAdapter
 import com.shpp.application.level_4.presentation.fragments.my_contacts.add_contact.ContactDialog
-import com.shpp.application.level_4.presentation.fragments.my_contacts.model.ContactItem
+import com.shpp.application.level_4.presentation.multiselect.ContactItem
 import com.shpp.application.level_4.presentation.fragments.viewPager_fragment.ViewPagerFragmentDirections
 import com.shpp.application.level_4.presentation.interfaces.ContactSelectionListener
 import com.shpp.application.level_4.presentation.interfaces.MyContactsAdapterListener
@@ -45,19 +43,15 @@ class MyContactsFragment :
                 override fun onDeleteClick(contact: User) {
                     viewModel.deleteUser(contact)
                     showSnackBar(
-                        "Removed!", R.string.snackbar_undo
+                        resources.getString(R.string.snackbar_removed), R.string.snackbar_undo
                     ) { viewModel.restoreLastDeletedUser() }
                 }
 
                 override fun onLongClick(contactItem: ContactItem) {
-                    if (viewModel.selectionModeLiveData.value == false) {
+                    if (!viewModel.isSelectionModeEnabled()) {
                         viewModel.enableSelectionMode()
                     }
                     viewModel.toggle(contactItem)
-                }
-
-                override fun onCheckClick(contact: User, isChecked: Boolean) {
-                    viewModel.toggle(ContactItem(contact, isChecked))
                 }
             },
 
@@ -74,6 +68,10 @@ class MyContactsFragment :
                     return viewModel.isCheck(user)
                 }
 
+                override fun onCheckClick(contact: User, isChecked: Boolean) {
+                    viewModel.toggle(ContactItem(contact, isChecked))
+                }
+
                 override fun disableSelectionMode() {
                      doDisableSelectionMode()
                 }
@@ -83,7 +81,7 @@ class MyContactsFragment :
                 }
 
                 override fun isSelectionModeEnabled(): Boolean {
-                    return viewModel.selectionModeLiveData.value ?: false
+                    return viewModel.isSelectionModeEnabled()
                 }
             }
         )
@@ -91,7 +89,7 @@ class MyContactsFragment :
 
     private fun doDisableSelectionMode() {
         viewModel.disableSelectionMode()
-        if (viewModel.selectionModeLiveData.value == false) {
+        if (!viewModel.isSelectionModeEnabled()) {
             binding.buttonMultiDelete.visibility = View.GONE
         }
     }
@@ -103,7 +101,7 @@ class MyContactsFragment :
     }
 
     private fun restoreButtonMultiDeleteState() {
-        if (viewModel.selectionModeLiveData.value == true) {
+        if (viewModel.isSelectionModeEnabled()) {
             binding.buttonMultiDelete.visibility = View.VISIBLE
         }
     }
@@ -117,7 +115,6 @@ class MyContactsFragment :
     }
 
     private fun addMultiDeleteListener() {
-
         binding.buttonMultiDelete.setOnClickListener{
             viewModel.deleteSelectedContacts()
             doDisableSelectionMode()
@@ -137,7 +134,7 @@ class MyContactsFragment :
         var recyclerState: Parcelable?
 
         // Reload RecyclerView and save the scroll state.
-        viewModel.selectionModeLiveData.observe(viewLifecycleOwner) { selectionMode ->
+        viewModel.getSelectionModeLiveData().observe(viewLifecycleOwner) { selectionMode ->
             recyclerState = binding.recyclerUsers.layoutManager?.onSaveInstanceState()
 
             binding.recyclerUsers.adapter = adapter

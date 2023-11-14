@@ -1,13 +1,12 @@
 package com.shpp.application.level_4.presentation.fragments.my_contacts
 
-import android.view.View
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.shpp.application.level_4.App
 import com.shpp.application.level_4.data.model.User
 import com.shpp.application.level_4.data.repository.UserRepository
-import com.shpp.application.level_4.presentation.fragments.my_contacts.model.ContactItem
+import com.shpp.application.level_4.presentation.multiselect.ContactItem
+import com.shpp.application.level_4.presentation.multiselect.MultiSelectManager
 
 /**
  * MyContactsViewModel.kt
@@ -19,50 +18,31 @@ class MyContactsViewModel (
     private val usersService: UserRepository = App.userRepository
     val users: LiveData<List<User>> = usersService.users
 
-    val selectionModeLiveData: LiveData<Boolean> get() = _selectionModeLiveData
+    private val multiSelectManager = MultiSelectManager(usersService.users.value)
 
-    val contactsLiveData: LiveData<List<ContactItem>> get() = _contactsLiveData
-    private val _contactsLiveData = MutableLiveData<List<ContactItem>>()
-    private val _selectionModeLiveData = MutableLiveData<Boolean>()
 
-    init {
-        _selectionModeLiveData.value = false
-    }
-
-    // Метод для вмикання режиму виділення
     fun enableSelectionMode() {
-        _selectionModeLiveData.value = true
+        multiSelectManager.enableSelectionMode()
     }
 
-    // Метод для вимикання режиму виділення
     fun disableSelectionMode() {
-        val hasLeastOneCheckContact = contactsLiveData.value?.find { it.isChecked }
-        if (hasLeastOneCheckContact == null) {
-            _selectionModeLiveData.value = false
-        }
+        multiSelectManager.disableSelectionMode()
     }
 
-    // Метод для видалення виділених контактів
     fun deleteSelectedContacts() {
-        usersService.deleteSelectedItems(_contactsLiveData.value)
+        usersService.deleteSelectedItems(multiSelectManager.contactsLiveData.value)
     }
 
     fun toggle(contactItem: ContactItem) {
-        val updatedContacts = _contactsLiveData.value?.toMutableList() ?: mutableListOf()
-        val contactIndex = updatedContacts.indexOf(updatedContacts.find { contactItem.id == it.id })
-
-        if (contactIndex != -1) {
-            updatedContacts[contactIndex] = contactItem
-            _contactsLiveData.value = updatedContacts
-        }
+        multiSelectManager.toggle(contactItem)
     }
 
     fun isCheck(user: User): Boolean {
-        val contactItem = _contactsLiveData.value?.find { user.id == it.id }
-        if (contactItem != null) {
-            return contactItem.isChecked
-        }
-        return false
+        return multiSelectManager.isCheck(user)
+    }
+
+    fun isSelectionModeEnabled(): Boolean {
+        return multiSelectManager.selectionModeLiveData.value ?: false
     }
 
     fun restoreLastDeletedUser() {
@@ -80,12 +60,10 @@ class MyContactsViewModel (
     }
 
    fun updateContactsSelectionMode() {
-       if (_contactsLiveData.isInitialized) {
-           _contactsLiveData.value = users.value?.map { user ->
-               ContactItem(user, _contactsLiveData.value?.find {  it.id == user.id}?.isChecked ?: false)
-           } ?: emptyList()
-       } else {
-           _contactsLiveData.value = users.value?.map { ContactItem(it, false) } ?: emptyList()
-       }
+       multiSelectManager.updateContactsSelectionMode(users.value)
+    }
+
+    fun getSelectionModeLiveData(): LiveData<Boolean> {
+        return multiSelectManager.selectionModeLiveData
     }
 }

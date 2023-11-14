@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <View
-        android:id="@+id/photoProfile"
+        android:id="@+id/viewPhotoProfile"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:layout_constraintHeight_percent="0.5"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/profileBlue"
-        />
+        android:background="@color/profileBlue" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/title"
+        android:id="@+id/textTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,8 +26,7 @@
         android:text="@string/title_myProfile"
         android:textColor="@color/profileTitle"
         android:textSize="@dimen/size_title_text"
-        app:fontFamily="@font/opensans_semibold"
-        />
+        app:fontFamily="@font/opensans_semibold"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonLogOut"
@@ -42,16 +38,15 @@
         android:fontFamily="@font/opensans_semibold"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/title"
-        app:layout_constraintTop_toTopOf="@id/title"
+        app:layout_constraintStart_toEndOf="@id/textTitle"
+        app:layout_constraintTop_toTopOf="@id/textTitle"
         android:layout_marginEnd="@dimen/normal_margin"
         android:paddingStart="@dimen/large_padding"
         android:paddingEnd="@dimen/large_padding"
         app:cornerRadius="@dimen/small_margin"
         app:strokeColor="@color/textJob"
         android:backgroundTint="@color/colorAccent"
-        app:strokeWidth="@dimen/stroke_width"
-        />
+        app:strokeWidth="@dimen/stroke_width" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/avatar"
@@ -76,8 +71,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/normal_margin"
-        app:layout_constraintHorizontal_bias="0.5"
-        />
+        app:layout_constraintHorizontal_bias="0.5" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textCareer"
@@ -90,8 +84,7 @@
         app:layout_constraintTop_toBottomOf="@id/textName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/small_margin"
-        />
+        android:layout_marginTop="@dimen/small_margin" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textAddress"
@@ -104,44 +97,38 @@
         app:layout_constraintTop_toBottomOf="@id/textCareer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/normal_margin"
-        />
+        android:layout_marginTop="@dimen/normal_margin" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/buttonImageFacebook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_facebook"
-        app:layout_constraintTop_toBottomOf="@id/photoProfile"
+        app:layout_constraintTop_toBottomOf="@id/viewPhotoProfile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread"
         android:layout_marginTop="@dimen/largest_margin"
-        app:layout_constraintEnd_toStartOf="@id/buttonImageIn"
-        />
+        app:layout_constraintEnd_toStartOf="@id/buttonImageIn" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/buttonImageIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_in"
-        app:layout_constraintTop_toBottomOf="@id/photoProfile"
+        app:layout_constraintTop_toBottomOf="@id/viewPhotoProfile"
         app:layout_constraintEnd_toStartOf="@id/buttonImageInst"
         app:layout_constraintStart_toEndOf="@id/buttonImageFacebook"
-        app:layout_constraintTop_toTopOf="@id/buttonImageFacebook"
-
-        />
+        app:layout_constraintTop_toTopOf="@id/buttonImageFacebook" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/buttonImageInst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_inst"
-        app:layout_constraintTop_toBottomOf="@id/photoProfile"
+        app:layout_constraintTop_toBottomOf="@id/viewPhotoProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/buttonImageIn"
-        app:layout_constraintTop_toTopOf="@id/buttonImageFacebook"
-
-        />
+        app:layout_constraintTop_toTopOf="@id/buttonImageFacebook" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonEdit"
@@ -161,13 +148,12 @@
         app:strokeWidth="@dimen/stroke_width"
         android:layout_marginBottom="@dimen/small_margin"
         android:layout_marginStart="@dimen/normal_margin"
-        android:layout_marginEnd="@dimen/normal_margin"
-        />
+        android:layout_marginEnd="@dimen/normal_margin" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonViewContact"
         android:layout_width="0dp"
-        android:layout_height="55dp"
+        android:layout_height="@dimen/height_button_message"
         android:text="@string/view_contact_button"
         android:fontFamily="@font/opensans_semibold"
         android:textColor="@color/white"
@@ -178,8 +164,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="@dimen/normal_margin"
         android:layout_marginStart="@dimen/normal_margin"
-        android:layout_marginEnd="@dimen/normal_margin"
-        />
-
-
+        android:layout_marginEnd="@dimen/normal_margin" />
 </androidx.constraintlayout.widget.ConstraintLayout>
